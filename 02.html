@@ -53,32 +53,101 @@
 
 		<section class="thumbnail-grid flex">
 			<a href="#!" class="flex-item">
+                <div class="carousel">
+                    <img src="images/1.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+                </div>
 				<figure class="">
-					<figcaption>Product #1</figcaption>
+                    <div class="carousel__images-wrapper" index="0">
+                        <div class="controls">
+                            <div class="carousel__prev-arrow prev">&lt;</div>
+                            <div class="carousel__next-arrow next">&gt;</div>
+                        </div>
+                    </div>
+					<figcaption>
+                        Product #1
+                    </figcaption>
+
 				</figure>
 			</a>
 			<a href="#!" class="flex-item">
+                <div class="carousel">
+                    <img src="images/4.jpg" alt="" />
+                    <img src="images/5.jpg" alt="" />
+                    <img src="images/6.jpg" alt="" />
+                </div>
 				<figure class="">
+                    <div class="carousel__images-wrapper" index="0">
+                        <div class="controls">
+                            <div class="carousel__prev-arrow prev">&lt;</div>
+                            <div class="carousel__next-arrow next">&gt;</div>
+                        </div>
+                    </div>
 					<figcaption>Product #2</figcaption>
 				</figure>
 			</a>
 			<a href="#!" class="flex-item">
+                <div class="carousel">
+                    <img src="images/8.jpg" alt="" />
+                    <img src="images/9.jpg" alt="" />
+                    <img src="images/7.jpg" alt="" />
+                </div>
 				<figure class="">
+                    <div class="carousel__images-wrapper" index="0">
+                        <div class="controls">
+                            <div class="carousel__prev-arrow prev">&lt;</div>
+                            <div class="carousel__next-arrow next">&gt;</div>
+                        </div>
+                    </div>
 					<figcaption>Product #3</figcaption>
 				</figure>
 			</a>
             <a href="#!" class="flex-item">
+                <div class="carousel">
+                    <img src="images/7.jpg" alt="" />
+                    <img src="images/5.jpg" alt="" />
+                    <img src="images/6.jpg" alt="" />
+                </div>
 				<figure class="">
+                    <div class="carousel__images-wrapper" index="0">
+                        <div class="controls">
+                            <div class="carousel__prev-arrow prev">&lt;</div>
+                            <div class="carousel__next-arrow next">&gt;</div>
+                        </div>
+                    </div>
 					<figcaption>Product #4</figcaption>
 				</figure>
 			</a>
 			<a href="#!" class="flex-item">
+                <div class="carousel">
+                    <img src="images/5.jpg" alt="" />
+                    <img src="images/5.jpg" alt="" />
+                    <img src="images/6.jpg" alt="" />
+                </div>
 				<figure class="">
+                    <div class="carousel__images-wrapper" index="0">
+                        <div class="controls">
+                            <div class="carousel__prev-arrow prev">&lt;</div>
+                            <div class="carousel__next-arrow next">&gt;</div>
+                        </div>
+                    </div>
 					<figcaption>Product #5</figcaption>
 				</figure>
 			</a>
 			<a href="#!" class="flex-item">
+                <div class="carousel">
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/4.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+                </div>
 				<figure class="">
+                    <div class="carousel__images-wrapper" index="0">
+                        <div class="controls">
+                            <div class="carousel__prev-arrow prev">&lt;</div>
+                            <div class="carousel__next-arrow next">&gt;</div>
+                        </div>
+                    </div>
 					<figcaption>Product #6</figcaption>
 				</figure>
 			</a>
@@ -117,20 +186,6 @@
     </div> <!-- cd-cart -->
 <script>
 
-function showMessage() {
-     console.log( 'Привет всем присутствующим!' );
-    }
-
-function showId() {
-    var cart = document.getElementById('cart');
-    if (cart){
-     console.log( 'У нас есть их!' );
- }else{
-     console.log( 'Будем искать дальше!' );
- }
-}
-
-showId();
 
 cart_trigger.onclick = function () {
     var cart = document.getElementById('cart');
@@ -148,6 +203,46 @@ function toggle_panel_visibility(panel, body) {
 
     }
 }
+
+var carousel = document.getElementsByClassName('carousel');
+
+var numberOfImages = [];
+
+var imagesArray = [];
+
+var imagesWrapper = document.getElementsByClassName('carousel__images-wrapper');
+
+for (var i=0; i<carousel.length; i++){
+// создание двумерного массива
+    var childNodes = carousel[i].childNodes;
+    imagesArray[i] = [];
+
+    for (var j = 0; j < childNodes.length; j++) {
+        var currentNode = childNodes[j];
+        if (currentNode.nodeName === 'IMG') {
+            imagesArray[i].push(currentNode.src);
+            currentNode.classList.add('hide');
+        }
+    }
+
+    numberOfImages[i] = imagesArray[i].length;
+
+
+imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+}
+
+var currentImage = [];
+
+
+for (var i=0; i<carousel.length; i++){
+
+    currentImage[i] = 0;
+
+    imagesWrapper[i].classList.add('fade-out');
+    imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
+    imagesWrapper[i].classList.remove('fade-out');
+}
+
 
     document.getElementById('btm-open-menu').onclick = function () {
         var toggle = document.querySelector('#menushop');

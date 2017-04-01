@@ -53,13 +53,29 @@
 
 		<section class="thumbnail-grid flex">
 			<a href="#!" class="flex-item">
+                <div class="carousel">
+                    <img src="images/1.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+                </div>
 				<figure class="">
-					<figcaption>Product #1</figcaption>
+                    <div class="carousel__images-wrapper" index="0">
+                        <div class="controls">
+                            <div class="carousel__prev-arrow prev">&lt;</div>
+                            <div class="carousel__next-arrow next">&gt;</div>
+                        </div>
+                    </div>
+					<figcaption>
+                        Product #1
+                    </figcaption>
+
 				</figure>
 			</a>
 			<a href="#!" class="flex-item">
 				<figure class="">
 					<figcaption>Product #2</figcaption>
+
+
 				</figure>
 			</a>
 			<a href="#!" class="flex-item">
@@ -117,20 +133,6 @@
     </div> <!-- cd-cart -->
 <script>
 
-function showMessage() {
-     console.log( 'Привет всем присутствующим!' );
-    }
-
-function showId() {
-    var cart = document.getElementById('cart');
-    if (cart){
-     console.log( 'У нас есть их!' );
- }else{
-     console.log( 'Будем искать дальше!' );
- }
-}
-
-showId();
 
 cart_trigger.onclick = function () {
     var cart = document.getElementById('cart');
@@ -148,6 +150,27 @@ function toggle_panel_visibility(panel, body) {
 
     }
 }
+
+var carousel = document.getElementsByClassName('carousel');
+var childNodes = carousel[0].childNodes;
+
+var imagesArray = [];
+
+for (var i = 0; i < childNodes.length; i++) {
+    var currentNode = childNodes[i];
+    if (currentNode.nodeName === 'IMG') {
+        imagesArray.push(currentNode.src);
+        currentNode.classList.add('hide');
+    }
+}
+
+var currentImage = 0;
+
+var imagesWrapper = document.getElementsByClassName('carousel__images-wrapper');
+imagesWrapper[0].style.backgroundImage = 'url(' + imagesArray[0] + ')';
+
+var numberOfImages = imagesArray.length;
+
 
     document.getElementById('btm-open-menu').onclick = function () {
         var toggle = document.querySelector('#menushop');
