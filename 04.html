@@ -58,7 +58,7 @@
                     <img src="images/2.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
                 </div>
-				<figure class="">
+				<figure class="" id="fig0">
                     <div class="carousel__images-wrapper" index="0">
                         <div class="controls">
                             <div class="carousel__prev-arrow prev">&lt;</div>
@@ -72,6 +72,13 @@
                           <input id="quantity_0" value="1" class="input-text quantity text" size="4"/>
                           <input class="plus btn" type="button" value="+">
                         </div>
+                        <div class="button">
+                         <div class="prices">$99</div>
+                         <a class="addtocart">
+                             <div class="add" rel="watche_1" product="Watche 1" sel="120.99">Add to Cart</div>
+                             <div class="added">Added!</div>
+                         </a>
+                    </div>
                     </figcaption>
 
 				</figure>
@@ -82,7 +89,7 @@
                     <img src="images/5.jpg" alt="" />
                     <img src="images/6.jpg" alt="" />
                 </div>
-				<figure class="">
+				<figure class=""  id="fig1">
                     <div class="carousel__images-wrapper" index="1">
                         <div class="controls">
                             <div class="carousel__prev-arrow prev">&lt;</div>
@@ -95,6 +102,13 @@
                           <input id="quantity_1" value="1" class="input-text quantity text" size="4"/>
                           <input class="plus btn" type="button" value="+">
                         </div>
+                        <div class="button">
+                         <div class="prices">$99</div>
+                         <a class="addtocart">
+                             <div class="add" rel="watche_2" product="Watche 2" sel="220.99">Add to Cart</div>
+                             <div class="added">Added!</div>
+                         </a>
+                    </div>
                     </figcaption>
 				</figure>
 			</a>
@@ -104,7 +118,7 @@
                     <img src="images/9.jpg" alt="" />
                     <img src="images/7.jpg" alt="" />
                 </div>
-				<figure class="">
+				<figure class=""  id="fig2">
                     <div class="carousel__images-wrapper" index="2">
                         <div class="controls">
                             <div class="carousel__prev-arrow prev">&lt;</div>
@@ -117,6 +131,13 @@
                           <input id="quantity_2" value="1" class="input-text quantity text" size="4"/>
                           <input class="plus btn" type="button" value="+">
                         </div>
+                        <div class="button">
+                         <div class="prices">$99</div>
+                         <a class="addtocart">
+                             <div class="add" rel="watche_3" product="Watche 3" sel="120.99">Add to Cart</div>
+                             <div class="added">Added!</div>
+                         </a>
+                    </div>
                     </figcaption>
 				</figure>
 			</a>
@@ -126,7 +147,7 @@
                     <img src="images/5.jpg" alt="" />
                     <img src="images/6.jpg" alt="" />
                 </div>
-				<figure class="">
+				<figure class=""  id="fig3">
                     <div class="carousel__images-wrapper" index="3">
                         <div class="controls">
                             <div class="carousel__prev-arrow prev">&lt;</div>
@@ -139,6 +160,13 @@
                           <input id="quantity_3" value="1" class="input-text quantity text" size="4"/>
                           <input class="plus btn" type="button" value="+">
                         </div>
+                        <div class="button">
+                         <div class="prices">$99</div>
+                         <a class="addtocart">
+                             <div class="add" rel="watche_4" product="Watche 4" sel="99">Add to Cart</div>
+                             <div class="added">Added!</div>
+                         </a>
+                    </div>
                     </figcaption>
 				</figure>
 			</a>
@@ -148,7 +176,7 @@
                     <img src="images/5.jpg" alt="" />
                     <img src="images/6.jpg" alt="" />
                 </div>
-				<figure class="">
+				<figure class=""  id="fig4">
                     <div class="carousel__images-wrapper" index="4">
                         <div class="controls">
                             <div class="carousel__prev-arrow prev">&lt;</div>
@@ -161,6 +189,13 @@
                           <input id="quantity_4" value="1" class="input-text quantity text" size="4"/>
                           <input class="plus btn" type="button" value="+">
                         </div>
+                        <div class="button">
+                         <div class="prices">$99</div>
+                         <a class="addtocart">
+                             <div class="add" rel="watche_5" product="Watche 5" sel="120.99">Add to Cart</div>
+                             <div class="added">Added!</div>
+                         </a>
+                    </div>
                     </figcaption>
 				</figure>
 			</a>
@@ -170,7 +205,7 @@
                     <img src="images/4.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
                 </div>
-				<figure class="">
+				<figure class="" id="fig5">
                     <div class="carousel__images-wrapper" index="5">
                         <div class="controls">
                             <div class="carousel__prev-arrow prev">&lt;</div>
@@ -183,6 +218,13 @@
                           <input id="quantity_5" value="1" class="input-text quantity text" size="4"/>
                           <input class="plus btn" type="button" value="+">
                         </div>
+                            <div class="button">
+                             <div class="prices">$99</div>
+                             <a class="addtocart">
+                                 <div class="add" rel="watche_6" product="Watche 6" sel="120.99">Add to Cart</div>
+                                 <div class="added">Added!</div>
+                             </a>
+                        </div>
                     </figcaption>
 				</figure>
 			</a>
@@ -191,24 +233,8 @@
 
     <div id="cart">
         <h2>Cart</h2>
-        <ul class="cart-items">
-            <li>
-                <span class="qty">1x</span> Product Name
-                <div class="price">$9.99</div>
-                <a href="#0" class="item-remove img-replace">Remove</a>
-            </li>
+        <ul class="cart-items" id="cart_items">
 
-            <li>
-                <span class="qty">2x</span> Product Name
-                <div class="price">$19.98</div>
-                <a href="#" class="item-remove img-replace">Remove</a>
-            </li>
-
-            <li>
-                <span class="qty">1x</span> Product Name
-                <div class="price">$9.99</div>
-                <a href="#" class="item-remove img-replace">Remove</a>
-            </li>
         </ul> <!-- cd-cart-items -->
 
         <div class="cart-total">
@@ -219,8 +245,8 @@
 
         <p class="go-to-cart"><a href="#">Go to cart page</a></p>
     </div> <!-- cd-cart -->
-<script>
 
+<script>
 
 cart_trigger.onclick = function () {
     var cart = document.getElementById('cart');
@@ -319,6 +345,69 @@ function handleSlideshowArrow(val, i) {
         e.target.nextElementSibling.setAttribute('value', val-1);
         });
     }
+
+    var addButtons = document.getElementsByClassName('add');
+
+    for (var i=0;i<addButtons.length; i++) {
+        addButtons[i].addEventListener('click', function(e) {
+        var  items = cart_items.children,
+              item = this.parentElement.parentElement.parentElement.parentElement;
+
+               var val = this.getAttribute("rel");
+               var productName =this.getAttribute('product');
+               var price = this.getAttribute('sel');
+               var qty = this.parentNode.parentNode.parentNode.querySelector(".quantity-input").getElementsByClassName('quantity')[0].getAttribute('value');
+
+              if(document.getElementById("price_"+val))
+              {
+                var new_val = parseFloat(document.getElementById("price_"+val).innerHTML);
+                new_val +=(parseFloat(qty)*parseFloat(price));
+
+                document.querySelector("span#price_"+val).innerHTML = new_val.toFixed(2);
+
+                var new_qty_val = parseFloat(document.getElementById("qty_"+val).innerHTML);
+                new_qty_val +=parseFloat(qty);
+                document.getElementById("qty_"+val).innerHTML = new_qty_val;
+              }else{
+                  var bg = item.previousElementSibling.children[0].children[0].getAttribute('src');
+
+                     cart_items.append(createCartItem(val, productName, price, qty, bg));
+
+              };
+
+        });
+    }
+
+    function createCartItem(val, productName, price, qty, bg){
+        var li = document.createElement('li');
+        li.setAttribute('id',val);
+        li.setAttribute("class", "cart-product");
+        var span = document.createElement('span');
+        var input = document.createElement('input');
+        input.setAttribute("class", "qty");
+        input.setAttribute('id',"qty_"+val);
+        input.setAttribute("value", qty);
+        span.appendChild(input);
+
+        var div = document.createElement('div');
+        div.setAttribute("class", "price");
+        div.innerHTML = productName+'<br/>'+'<span class="item-prices" id="price_'+val+'">'+price+'</span>&nbsp;';
+
+        var a = document.createElement('a');
+        a.setAttribute("class", "item-remove img-replace");
+        a.setAttribute("href", "#");
+        a.innerHTML = "Remove";
+
+        li.appendChild(span);
+        li.appendChild(div);
+        li.appendChild(a);
+        li.querySelector('.qty').style.backgroundImage = 'url(' + bg + ')';
+
+        return li;
+    }
+
+
+////////
 
 
     document.getElementById('btm-open-menu').onclick = function () {

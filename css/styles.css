@@ -84,7 +84,9 @@ img {
 }
 .thumbnail-grid figure:hover {
 	box-shadow: inset 0 -250px 0 0 rgba(0,0,0,.5);
+
 }
+
 
 .thumbnail-grid figcaption {
 	position: absolute;
@@ -586,10 +588,15 @@ ul #responsive-toggle {
   padding: 0;
 }
 
+#cart ul {
+  list-style: none;
+}
+
 #cart .cart-items li {
   position: relative;
   padding: 1em;
   border-top: 1px solid #e0e6ef;
+  list-style: none;
 }
 
 #cart .cart-items li:last-child {
@@ -844,3 +851,89 @@ ul #responsive-toggle {
 .cart-open {
   display: block;
 }
+
+.button {
+   position: absolute;;
+   display: none;
+   z-index: -1;
+   margin-left: auto;
+   margin-right: auto;
+   left: 0;
+   right: 0;
+   width: 150px;
+   height: 50px;
+   text-align: center;
+   perspective: 1000px;
+ }
+
+ .thumbnail-grid figure:hover .button{
+     display: block;
+     z-index: 10;
+
+ }
+
+ .button .prices {
+   position: absolute;
+   z-index: 2;
+   top: 2px;
+   display: block;
+   width: 50px;
+   height: 46px;
+   border-right: 1px solid #9cdaf0;
+   border-radius: 2px 0 0 2px;
+   background: #fff;
+   line-height: 45px;
+   color: #b00;
+   transform: rotateY(0deg) translateZ(25px);
+ }
+ .button .addtocart {
+   position: absolute;
+   left: 48px;
+   width: 100%;
+   height: 100%;
+   transform-style: preserve-3d;
+   transform: translateZ(-100px);
+   transition: transform 300ms;
+   cursor: pointer;
+ }
+ .button .addtocart > div {
+   position: absolute;
+   display: block;
+   width: 150px;
+   height: 50px;
+   border-radius: 0 2px 2px 0;
+   line-height: 50px;
+ }
+ .button .addtocart > .add {
+   background: #fff;
+   color: #b00;
+   transform: rotateY(0deg) translateZ(25px);
+   transition: background 150ms ease-out;
+ }
+ .button .addtocart >.add:hover {
+   background: #b00;
+   color: #fff;
+ }
+ .button .addtocart > .added {
+   background: #f63;
+   color: #fff;
+   transform: rotateX(90deg) translateZ(25px);
+ }
+ .button .addtocart.active {
+   animation-name: rotate;
+   animation-duration: 1s;
+ }
+ .cart-product input.qty {
+   width: 75px;
+   height: 75px;
+   padding: 0;
+   border: 0;
+   border-right: 1px solid #333;
+   background: rgba(0, 0, 0, 0.5);
+   font-size: 2.5em;
+   line-height: 75px;
+   text-align: center;
+   color: #fff;
+   background-size: cover;
+   background-repeat: no-repeat;
+ }
