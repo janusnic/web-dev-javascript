@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Slider</title>
+        <link rel="stylesheet" type="text/css" href="slider.css">
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="image-slider-wrapper">
+                <ul id="image_slider">
+                  <li><img src="images/1.jpg"></li>
+                  <li><img src="images/2.jpg"></li>
+                  <li><img src="images/3.jpg"></li>
+                </ul>
+            </div>
+        </div>
+
+<script>
+
+var carousel;
+
+var liItems;
+var numberOfLis;
+var sliderWidth = 0;
+var imageWidth;
+var currentImage = 0;
+
+function init(){
+    carousel = document.getElementById('image_slider');
+    liItems = carousel.children;
+    numberOfLis = liItems.length;
+
+    for (i = 0; i < numberOfLis; i++){
+            imageWidth = liItems[i].childNodes[0].clientWidth;
+            sliderWidth += imageWidth;
+        }
+    carousel.style.width = parseInt(sliderWidth) + 'px';
+    slider();
+
+}
+
+function slider(){
+        animate({
+            delay:17,
+            duration: 3000,
+            delta:function(p){return Math.max(0, -1 + 2 * p)},
+            step:function(delta){
+                    carousel.style.left = '-' + parseInt(currentImage * imageWidth + delta * imageWidth) + 'px';
+                },
+            callback:function(){
+                currentImage++;
+                if(currentImage < numberOfLis-1){
+                    slider();
+                }
+                else{
+                    setTimeout(slider, 4000);
+                }
+            }
+        });
+}
+
+function animate(opts){
+    var start = new Date;
+    var id = setInterval(function(){
+        var timePassed = new Date - start;
+        var progress = timePassed / opts.duration
+
+        if(progress > 1){
+            progress = 1;
+        }
+        var delta = opts.delta(progress);
+        opts.step(delta);
+
+        if (progress == 1){
+            clearInterval(id);
+            opts.callback();
+        }
+    }, opts.dalay || 17);
+}
+
+window.onload = init;
+
+        </script>
+    </body>
+</html>
