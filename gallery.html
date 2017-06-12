@@ -1,0 +1,41 @@
+<html>
+<head>
+    <style type="text/css">
+    .nav li{
+        display: inline-block;
+    }
+    .nav li a {
+        text-decoration: none;
+        color: white;
+        background:red;
+        padding: 1em;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<h1>Gallery</h1>
+
+<ul class="nav">
+      <li><a href="#" id="img1" onclick="changeImg(1);">Image 1</a></li>
+      <li><a href="#" id="img2" onclick="changeImg(2);">Image 2</a></li>
+      <li><a href="#" id="img3" onclick="changeImg(3);">Image 3</a></li>
+</ul>
+
+  <div id="pic">
+      <img src="images/1.jpg" />
+  </div>
+
+</div>
+
+<script>
+    function changeImg(i){
+         var pic = document.getElementById("pic");
+         pic.innerHTML = '<img src="images/'+i+'.jpg" />';
+        }
+</script>
+
+</body>
+</html>

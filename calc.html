@@ -1,0 +1,64 @@
+<html>
+<body>
+
+<form>
+<input type="text" id="res" value="">
+<br>
+<input type="button" value="0" id="b0">
+<input type="button" value="1" id="b1">
+<input type="button" value="2" id="b2">
+<br>
+<input type="button" value="3" id="b3">
+<input type="button" value="4" id="b4">
+<input type="button" value="5" id="b5">
+<br>
+<input type="button" value="6" id="b6">
+<input type="button" value="7" id="b7">
+<input type="button" value="8" id="b8">
+<br>
+<input type="button" value="9" id="b9">
+<input type="button" value="+" id="plus">
+<input type="button" value="=" id="equal">
+</form>
+<script type="text/javascript">
+    var a, b;
+    
+    b2.onclick = function(){
+     if (a===undefined){
+        res.value = b2.value;
+        a = parseInt(b2.value);
+     }else{
+        res.value += b2.value;
+        b = parseInt(b2.value);
+     }
+    }
+
+    b3.onclick = function(){
+     if (a===undefined){
+        res.value = b3.value;
+        a = parseInt(b3.value);
+     }else{
+        res.value += b3.value;
+        b = parseInt(b3.value);
+     }
+    }
+
+    // b3.onclick = function(){
+    //     res.value += b3.value;
+    //     b = parseInt(b3.value);
+    // }
+
+    plus.onclick = function(){
+        res.value += plus.value;
+
+    }
+    equal.onclick = function(){
+        res.value = a+b;
+        a = undefined;
+        b = undefined;
+    }
+
+</script>
+
+</body>
+</html>
