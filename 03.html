@@ -2,295 +2,267 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cart</title>
-    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet prefetch" href="css/styles.css">
+    <title>Shop</title>
+
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style media="all">
+
+
+
+</style>
+
 </head>
 
 <body>
-    <header>
 
-    <nav class="mainnav" role="navigation">
+    <div class="fake-nav"></div><!-- special for content under navigation, when nav situate in top height==nav.height -->
+    <div id="nav">
 
-      <ul>
-          <!--   START bottom in responsive menu    -->
+    <!--  START search input-->
+        <div class="search-container">
+            <input id="search-toggle" type="checkbox">
+            <label class="search-backdrop" for="search-toggle"></label>
+            <div class="search-content">
+                <form id="search-form" action="">
+                    <input type="search" class="input-search" placeholder="Input what you want to search" required>
+                    <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
+                </form>
+            </div>
+        </div>
+    <!--  END search input-->
 
-              <label for="responsive-toggle" id="btm-open-menu">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </label>
-          <!--   END bottom in responsive menu    -->
+        <ul class="list-menu">
 
-          <li class="item-menu shop" id="menushop">
-              <i href="shop.html">shop</i>
-              <ul class="sub-menu">
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>
-              <li><a href="#">Link 4</a></li>
-              <li><a href="#">Link 5</a></li>
-              <li><a href="#">Link 6</a></li>
-              </ul>
-          </li>
-          <li class="logo">
-            <a href="index.html">LOGO<br><span>Short Description</span></a>
-          </li>
-          <li class="nav-icons" id="navicons">
-              <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
-              <label for="modal-basket-toggle" id="cart_trigger"><i class="fa fa-shopping-cart" aria-hidden="true"></i></label>
-              <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
-          </li>
-      </ul>
+        <!--   START bottom in responsive menu    -->
+            <input id="responsive-toggle" type="checkbox">
 
-    </nav>
-</header>
+            <label for="responsive-toggle" id="btm-open-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        <!--   END bottom in responsive menu    -->
 
-	<main>
+            <li class="item-menu shop">
+                <i href="shop.html">shop</i>
+                <ul class="sub-menu">
+                    <li>
+                        <h3 class="title-sub-menu"><a href="index.html">Home</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="blog.html">Blog</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="about.html">About</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="contact.html">Contact</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="shop.html">Shop</a></h3>
+                    </li>
+                </ul>
+            </li>
+            <li class="item-menu logo">
+              <a href="index.html">LOGO<br><span>Short Description</span></a>
+            </li>
+            <li class="item-menu nav-icons">
+                <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
+                <label for="modal-basket-toggle"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
+                <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
+            </li>
+        </ul>
+    </div>
+    <!--  END NAVIGAION  -->
 
-		<h1>My SHOP</h1>
+  <header>
+    <hgroup>
+       <h1>My Web Shop</h1>
 
-		<section class="thumbnail-grid flex">
-			<a href="#!" class="flex-item">
-                <div class="carousel">
+    </hgroup>
+  </header>
+
+  <div class="wrapper">
+
+      <ul class="grid cards caption-hover">
+          
+          <li>
+            <div class="carousel">
                     <img src="images/1.jpg" alt="" />
                     <img src="images/2.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
-                </div>
-				<figure class="">
-                    <div class="carousel__images-wrapper" index="0">
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=0>
                         <div class="controls">
-                            <div class="carousel__prev-arrow prev">&lt;</div>
-                            <div class="carousel__next-arrow next">&gt;</div>
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
-                    </div>
-					<figcaption>
-                        Product #1
-                    </figcaption>
+              </div>
+                  <figcaption>
+                      <h3>Product 1</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
 
-				</figure>
-			</a>
-			<a href="#!" class="flex-item">
-                <div class="carousel">
-                    <img src="images/4.jpg" alt="" />
-                    <img src="images/5.jpg" alt="" />
-                    <img src="images/6.jpg" alt="" />
-                </div>
-				<figure class="">
-                    <div class="carousel__images-wrapper" index="1">
-                        <div class="controls">
-                            <div class="carousel__prev-arrow prev">&lt;</div>
-                            <div class="carousel__next-arrow next">&gt;</div>
-                        </div>
-                    </div>
-					<figcaption>Product #2</figcaption>
-				</figure>
-			</a>
-			<a href="#!" class="flex-item">
-                <div class="carousel">
-                    <img src="images/8.jpg" alt="" />
-                    <img src="images/9.jpg" alt="" />
-                    <img src="images/7.jpg" alt="" />
-                </div>
-				<figure class="">
-                    <div class="carousel__images-wrapper" index="2">
-                        <div class="controls">
-                            <div class="carousel__prev-arrow prev">&lt;</div>
-                            <div class="carousel__next-arrow next">&gt;</div>
-                        </div>
-                    </div>
-					<figcaption>Product #3</figcaption>
-				</figure>
-			</a>
-            <a href="#!" class="flex-item">
-                <div class="carousel">
-                    <img src="images/7.jpg" alt="" />
-                    <img src="images/5.jpg" alt="" />
-                    <img src="images/6.jpg" alt="" />
-                </div>
-				<figure class="">
-                    <div class="carousel__images-wrapper" index="3">
-                        <div class="controls">
-                            <div class="carousel__prev-arrow prev">&lt;</div>
-                            <div class="carousel__next-arrow next">&gt;</div>
-                        </div>
-                    </div>
-					<figcaption>Product #4</figcaption>
-				</figure>
-			</a>
-			<a href="#!" class="flex-item">
-                <div class="carousel">
-                    <img src="images/5.jpg" alt="" />
-                    <img src="images/5.jpg" alt="" />
-                    <img src="images/6.jpg" alt="" />
-                </div>
-				<figure class="">
-                    <div class="carousel__images-wrapper" index="4">
-                        <div class="controls">
-                            <div class="carousel__prev-arrow prev">&lt;</div>
-                            <div class="carousel__next-arrow next">&gt;</div>
-                        </div>
-                    </div>
-					<figcaption>Product #5</figcaption>
-				</figure>
-			</a>
-			<a href="#!" class="flex-item">
-                <div class="carousel">
+          </li>
+          <li>
+            <div class="carousel">
+                    <img src="images/1.jpg" alt="" />
                     <img src="images/2.jpg" alt="" />
-                    <img src="images/4.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
-                </div>
-				<figure class="">
-                    <div class="carousel__images-wrapper" index="5">
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=0>
                         <div class="controls">
-                            <div class="carousel__prev-arrow prev">&lt;</div>
-                            <div class="carousel__next-arrow next">&gt;</div>
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
-                    </div>
-					<figcaption>Product #6</figcaption>
-				</figure>
-			</a>
-		</section>
-	</main>
+              </div>
+                  <figcaption>
+                      <h3>Product 1</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
 
-    <div id="cart">
-        <h2>Cart</h2>
-        <ul class="cart-items">
-            <li>
-                <span class="qty">1x</span> Product Name
-                <div class="price">$9.99</div>
-                <a href="#0" class="item-remove img-replace">Remove</a>
-            </li>
+          </li>
+          <li>
+            <div class="carousel">
+                    <img src="images/1.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=0>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Product 1</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
 
-            <li>
-                <span class="qty">2x</span> Product Name
-                <div class="price">$19.98</div>
-                <a href="#" class="item-remove img-replace">Remove</a>
-            </li>
+          </li>
+          <li>
+            <div class="carousel">
+                    <img src="images/1.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=0>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Product 1</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
 
-            <li>
-                <span class="qty">1x</span> Product Name
-                <div class="price">$9.99</div>
-                <a href="#" class="item-remove img-replace">Remove</a>
-            </li>
-        </ul> <!-- cd-cart-items -->
+          </li>
+          
 
-        <div class="cart-total">
-            <p>Total <span>$39.96</span></p>
-        </div> <!-- cd-cart-total -->
+      </ul>
+  </div><!-- /container -->
 
-        <a href="#" class="checkout-btn">Checkout</a>
+<footer>
+  <p>§</p>
+  <p>© 20017 <a href="#">My Site</a></p>
+</footer>
 
-        <p class="go-to-cart"><a href="#">Go to cart page</a></p>
-    </div> <!-- cd-cart -->
-<script>
+<script type="text/javascript">
+  window.onload = function(){
 
+    var carousel = document.getElementsByClassName('carousel');
+    var imagesWrapper = document.getElementsByClassName('images-wrapper');
+    var imagesArray = [];
+    var numberOfImages = [];
 
-cart_trigger.onclick = function () {
-    var cart = document.getElementById('cart');
-    toggle_panel_visibility(cart, document.body);
-};
+    var prevArrow = document.getElementsByClassName('prev');
+    var nextArrow = document.getElementsByClassName('next');
 
+   
+    for (var i=0; i<carousel.length; i++){
 
-function toggle_panel_visibility(panel, body) {
-    if (panel.classList.contains('speed-in')) {
-        panel.classList.remove('speed-in');
-        body.classList.remove('overflow-hidden');
-    } else {
-        body.classList.add('overflow-hidden');
-        panel.classList.add('speed-in');
+      var childNodes = carousel[i].childNodes;
+     
+      imagesArray[i] = [];
 
-    }
-}
-
-var carousel = document.getElementsByClassName('carousel');
-
-var numberOfImages = [];
-
-var imagesArray = [];
-
-var imagesWrapper = document.getElementsByClassName('carousel__images-wrapper');
-
-var prevArrow = document.getElementsByClassName('prev');
-var nextArrow = document.getElementsByClassName('next');
-
-
-for (var i=0; i<carousel.length; i++){
-// создание двумерного массива
-    var childNodes = carousel[i].childNodes;
-    imagesArray[i] = [];
-
-    for (var j = 0; j < childNodes.length; j++) {
-        var currentNode = childNodes[j];
-        if (currentNode.nodeName === 'IMG') {
-            imagesArray[i].push(currentNode.src);
-            currentNode.classList.add('hide');
-        }
-    }
-
-    numberOfImages[i] = imagesArray[i].length;
-
-
-imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
-}
-
-var currentImage = [];
-
-for (var i=0; i<carousel.length; i++){
-
-    currentImage[i] = 0;
-//      cur[i] = i;
-
-    prevArrow[i].addEventListener('click', function (e) {
-        handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
-    });
-
-    nextArrow[i].addEventListener('click',  function (e) {
-        handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
-    });
-}
-
-function handleSlideshowArrow(val, i) {
-      if (val === 'prev') {
-          if (currentImage[i] > 0) {
-              currentImage[i]--;
-          } else {
-              currentImage[i] = numberOfImages[i] - 1;
-          }
-      } else if (val === 'next') {
-          if (currentImage[i] < numberOfImages[i] - 1) {
-              currentImage[i]++;
-          } else {
-              currentImage[i] = 0;
+      for (var j = 0; j < childNodes.length; j++) {
+      
+          var currentNode = childNodes[j];
+      
+          if (currentNode.nodeName === 'IMG') {
+              imagesArray[i].push(currentNode.src);
+              currentNode.classList.add('hide');
           }
       }
-      imagesWrapper[i].classList.add('fade-out');
-      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
-      imagesWrapper[i].classList.remove('fade-out');
-  }
 
+      numberOfImages[i] = imagesArray[i].length;
 
-
-    document.getElementById('btm-open-menu').onclick = function () {
-        var toggle = document.querySelector('#menushop');
-        if (toggle.classList.contains('isvisible')) {
-            document.querySelector('#btm-open-menu span:nth-child(1)').classList.remove('child1');
-            document.querySelector('#btm-open-menu span:nth-child(2)').classList.remove('child2');
-            document.querySelector('#btm-open-menu span:nth-child(3)').classList.remove('child3');
-            document.querySelector('#btm-open-menu span:nth-child(4)').classList.remove('child1');
-            document.querySelector('#menushop').classList.remove('isvisible');
-
-    }else{
-        document.querySelector('#btm-open-menu span:nth-child(1)').classList.add('child1');
-        document.querySelector('#btm-open-menu span:nth-child(2)').classList.add('child2');
-        document.querySelector('#btm-open-menu span:nth-child(3)').classList.add('child3');
-        document.querySelector('#btm-open-menu span:nth-child(4)').classList.add('child1');
-        document.querySelector('#menushop').classList.add('isvisible');
-        document.querySelector('#navicons').classList.add('isvisible');
+      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
     }
-};
 
+      var currentImage = [];
+
+      for (var i=0; i<carousel.length; i++){
+
+            currentImage[i] = 0;
+      //      cur[i] = i;
+
+            prevArrow[i].addEventListener('click', function (e) {
+                handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
+            });
+
+            nextArrow[i].addEventListener('click',  function (e) {
+                handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
+            });
+        }
+
+
+      function handleSlideshowArrow(val, i) {
+        if (val === 'prev') {
+            if (currentImage[i] > 0) {
+                currentImage[i]--;
+            } else {
+                currentImage[i] = numberOfImages[i] - 1;
+            }
+        } else if (val === 'next') {
+            if (currentImage[i] < numberOfImages[i] - 1) {
+                currentImage[i]++;
+            } else {
+                currentImage[i] = 0;
+            }
+        }
+        imagesWrapper[i].classList.add('fade-out');
+        imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
+        imagesWrapper[i].classList.remove('fade-out');
+    }
+
+
+
+
+  }
 </script>
+
 </body>
 </html>
