@@ -6,14 +6,10 @@
 
 <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/style.css">
 
-<style media="all">
+<link rel="stylesheet" type="text/css" href="./font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
 
-
-
-</style>
 
 </head>
 
@@ -121,22 +117,26 @@
   <p>§</p>
   <p>© 20017 <a href="#">My Site</a></p>
 </footer>
-
+<script src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-  window.onload = function(){
 
-    var carousel = document.getElementsByClassName('carousel');
-    var imagesWrapper = document.getElementsByClassName('images-wrapper');
+  $(document).ready(function() {
+
+    console.log( "ready!" );
+
+    var carousel = $('.carousel');
+    var imagesWrapper = $('.images-wrapper');
+
+    var prevArrow = $('.prev');
+    var nextArrow = $('.next');
+
+    
     var imagesArray = [];
     var numberOfImages = [];
-
-    var prevArrow = document.getElementsByClassName('prev');
-    var nextArrow = document.getElementsByClassName('next');
-
-   
+    
     for (var i=0; i<carousel.length; i++){
 
-      var childNodes = carousel[i].childNodes;
+      var childNodes = $(carousel[i]).children();
      
       imagesArray[i] = [];
 
@@ -144,26 +144,33 @@
       
           var currentNode = childNodes[j];
       
-          if (currentNode.nodeName === 'IMG') {
+          if ($(currentNode).prop("tagName") === 'IMG') {
               imagesArray[i].push(currentNode.src);
-              currentNode.classList.add('hide');
+              $(currentNode).addClass('hide');
           }
       }
 
       numberOfImages[i] = imagesArray[i].length;
-
-      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+      $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][0] + ')');
     }
 
-      var currentImage = [];
+      // prevArrow[0].addEventListener('click', function (e) {
+      //     handleSlideshowArrow('prev');
+      // });
 
+      // nextArrow[0].addEventListener('click',  function (e) {
+      //     handleSlideshowArrow('next');
+      // });
+
+      var currentImage = [];
       currentImage[0] = 0;
 
-      prevArrow[0].addEventListener('click', function (e) {
+
+      $(prevArrow[0]).click(function (e) {
           handleSlideshowArrow('prev');
       });
 
-      nextArrow[0].addEventListener('click',  function (e) {
+      $(nextArrow[0]).click(function (e) {
           handleSlideshowArrow('next');
       });
 
@@ -181,14 +188,16 @@
                 currentImage[0] = 0;
             }
         }
-        imagesWrapper[0].classList.add('fade-out');
-        imagesWrapper[0].style.backgroundImage = 'url(' + imagesArray[0][currentImage[0]] + ')';
-        imagesWrapper[0].classList.remove('fade-out');
+        
+        $(imagesWrapper[0]).addClass('fade-out');
+        $(imagesWrapper[0]).css('background-image','url(' + imagesArray[0][currentImage[0]] + ')');
+        $(imagesWrapper[0]).removeClass('fade-out');
     }
 
 
+  });
 
-  }
+
 </script>
 
 </body>

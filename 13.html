@@ -189,21 +189,26 @@
   <p>© 20017 <a href="#">My Site</a></p>
 </footer>
 
+<script src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-  window.onload = function(){
 
-    var carousel = document.getElementsByClassName('carousel');
-    var imagesWrapper = document.getElementsByClassName('images-wrapper');
+  $(document).ready(function() {
+
+    console.log( "ready!" );
+
+    var carousel = $('.carousel');
+    var imagesWrapper = $('.images-wrapper');
+
+    var prevArrow = $('.prev');
+    var nextArrow = $('.next');
+
+    
     var imagesArray = [];
     var numberOfImages = [];
-
-    var prevArrow = document.getElementsByClassName('prev');
-    var nextArrow = document.getElementsByClassName('next');
-
-   
+    
     for (var i=0; i<carousel.length; i++){
 
-      var childNodes = carousel[i].childNodes;
+      var childNodes = $(carousel[i]).children();
      
       imagesArray[i] = [];
 
@@ -211,33 +216,40 @@
       
           var currentNode = childNodes[j];
       
-          if (currentNode.nodeName === 'IMG') {
+          if ($(currentNode).prop("tagName") === 'IMG') {
               imagesArray[i].push(currentNode.src);
-              currentNode.classList.add('hide');
+              $(currentNode).addClass('hide');
           }
       }
 
       numberOfImages[i] = imagesArray[i].length;
-
-      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+      $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][0] + ')');
     }
+
 
       var currentImage = [];
 
       for (var i=0; i<carousel.length; i++){
 
             currentImage[i] = 0;
-      //      cur[i] = i;
 
-            prevArrow[i].addEventListener('click', function (e) {
-                handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
+            $(prevArrow[i]).click(function (e) {
+              console.log($(this));
+                handleSlideshowArrow('prev', $(this).parent().parent().attr('index'));
             });
 
-            nextArrow[i].addEventListener('click',  function (e) {
-                handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
+            $(nextArrow[i]).click(function (e) {
+                handleSlideshowArrow('next', $(this).parent().parent().attr('index'));
             });
+
+            // prevArrow[i].addEventListener('click', function (e) {
+            //     handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
+            // });
+
+            // nextArrow[i].addEventListener('click',  function (e) {
+            //     handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
+            // });
         }
-
 
       function handleSlideshowArrow(val, i) {
         if (val === 'prev') {
@@ -253,15 +265,20 @@
                 currentImage[i] = 0;
             }
         }
-        imagesWrapper[i].classList.add('fade-out');
-        imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
-        imagesWrapper[i].classList.remove('fade-out');
+        // imagesWrapper[i].classList.add('fade-out');
+        // imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
+        // imagesWrapper[i].classList.remove('fade-out');
+
+        $(imagesWrapper[i]).addClass('fade-out');
+        $(imagesWrapper[i]).css('background-image','url(' + imagesArray[0][currentImage[0]] + ')');
+        $(imagesWrapper[i]).removeClass('fade-out');
+
     }
 
 
+  });
 
 
-  }
 </script>
 
 </body>
