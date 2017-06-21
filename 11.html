@@ -2,180 +2,168 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cart</title>
-    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet prefetch" href="css/styles.css">
+    <title>Shop</title>
+
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+
 </head>
 
 <body>
-    <header>
 
-    <nav class="mainnav" role="navigation">
+    <div class="fake-nav"></div><!-- special for content under navigation, when nav situate in top height==nav.height -->
+    <div id="nav">
 
-      <ul>
-          <!--   START bottom in responsive menu    -->
-
-              <label for="responsive-toggle" id="btm-open-menu">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </label>
-          <!--   END bottom in responsive menu    -->
-
-          <li class="item-menu shop" id="menushop">
-              <i href="shop.html">shop</i>
-              <ul class="sub-menu">
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>
-              <li><a href="#">Link 4</a></li>
-              <li><a href="#">Link 5</a></li>
-              <li><a href="#">Link 6</a></li>
-              </ul>
-          </li>
-          <li class="logo">
-            <a href="index.html">LOGO<br><span>Short Description</span></a>
-          </li>
-          <li class="nav-icons" id="navicons">
-              <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
-              <label for="modal-basket-toggle" id="cart_trigger"><i class="fa fa-shopping-cart" aria-hidden="true"></i></label>
-              <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
-          </li>
-      </ul>
-
-    </nav>
-</header>
-
-	<main>
-
-		<h1>My SHOP</h1>
-
-		<section class="thumbnail-grid flex">
-
-		</section>
-	</main>
-
-    <div id="cart">
-        <h2>Cart</h2>
-        <ul class="cart-items" id="cart_items">
-
-        </ul> <!-- cd-cart-items -->
-
-        <div class="cart-total">
-            <p>Total <span>$39.96</span></p>
-        </div> <!-- cd-cart-total -->
-
-        <a href="#" class="checkout-btn">Checkout</a>
-
-        <p class="go-to-cart"><a href="#">Go to cart page</a></p>
-    </div> <!-- cd-cart -->
-
-    <script id="productTemplate" type="text/template">
-        <a href="#!" class="flex-item">
-            <div class="carousel">
-                <img class="hide">
-                <img class="hide">
-                <img class="hide">
+    <!--  START search input-->
+        <div class="search-container">
+            <input id="search-toggle" type="checkbox">
+            <label class="search-backdrop" for="search-toggle"></label>
+            <div class="search-content">
+                <form id="search-form" action="">
+                    <input type="search" class="input-search" placeholder="Input what you want to search" required>
+                    <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
+                </form>
             </div>
+        </div>
+    <!--  END search input-->
+
+        <ul class="list-menu">
+
+        <!--   START bottom in responsive menu    -->
+            <input id="responsive-toggle" type="checkbox">
+
+            <label for="responsive-toggle" id="btm-open-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        <!--   END bottom in responsive menu    -->
+
+            <li class="item-menu shop">
+                <i href="shop.html">shop</i>
+                <ul class="sub-menu">
+                    <li>
+                        <h3 class="title-sub-menu"><a href="index.html">Home</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="blog.html">Blog</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="about.html">About</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="contact.html">Contact</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="shop.html">Shop</a></h3>
+                    </li>
+                </ul>
+            </li>
+            <li class="item-menu logo">
+              <a href="index.html">LOGO<br><span>Short Description</span></a>
+            </li>
+            <li class="item-menu nav-icons">
+                <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
+                <label for="modal-basket-toggle"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
+                <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
+            </li>
+        </ul>
+    </div>
+    <!--  END NAVIGAION  -->
+
+  <header>
+    <hgroup>
+       <h1>My Web Shop</h1>
+
+    </hgroup>
+  </header>
+
+  <div class="wrapper">
+
+      <ul class="grid cards caption-hover">
+          
+          <li>
+            <div class="carousel">
+                    <img src="images/1.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
             <figure>
-                <div class="carousel__images-wrapper" index="0" style="background-image: url(images/1.jpg);">
-                    <div class="controls">
-                        <div class="carousel__prev-arrow prev">&lt;</div>
-                        <div class="carousel__next-arrow next">&gt;</div>
-                    </div>
-                </div>
+              <div class="images-wrapper" index=0>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Settings</h3>
+                      <span>Janus Nic</span>
+                      <a href="#">Take a look</a>
+                  </figcaption>
+              </figure>
 
-                <figcaption>
+          </li>
 
-                    <h2 class="productName"></h2>
-                    <div class="quantity-input">
-                        <input class="minus btn" type="button" value="-">
-                        <input class="input-text quantity text" value="1" size="4">
-                        <input class="plus btn" type="button" value="+">
-                    </div>
+      </ul>
+  </div><!-- /container -->
 
-                    <div class="button">
-                        <div class="prices">0</div>
-                        <a class="addtocart">
-                            <div class="add" rel="watche_0" product="Product 0" sel="177">Add to Cart</div>
-                            <div class="added"></div>
-                        </a>
-                    </div>
+<footer>
+  <p>§</p>
+  <p>© 20017 <a href="#">My Site</a></p>
+</footer>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
 
-                </figcaption>
-            </figure>
-        </a>
-    </script>
+  $(document).ready(function() {
 
-<script src="js/jquery.min.js"></script>
+    console.log( "ready!" );
 
-<script>
-$(document).ready(function () {
+    // var carousel = document.getElementsByClassName('carousel');
+    var carousel = $('.carousel');
+    // var imagesWrapper = document.getElementsByClassName('images-wrapper');
+    var imagesWrapper = $('.images-wrapper');
+    
+    var imagesArray = [];
+    var numberOfImages = [];
+    
+    for (var i=0; i<carousel.length; i++){
 
-    var data = [{
+      //var childNodes = carousel[i].childNodes;
+      var childNodes = $(carousel[i]).children();
+     
+      imagesArray[i] = [];
 
-        id: 0,
-        name: 'Product 0',
-        price: 177,
-        carousel: [1,2,3]
-    },
-    {
+      for (var j = 0; j < childNodes.length; j++) {
+      
+          var currentNode = childNodes[j];
+      
+          // if (currentNode.nodeName === 'IMG') {
+          if ($(currentNode).prop("tagName") === 'IMG') {
+            
+              imagesArray[i].push(currentNode.src);
+              //currentNode.classList.add('hide');
+              $(currentNode).addClass('hide');
+              
+          }
+      }
 
-        id: 1,
-        name: 'Product 1',
-        price: 77,
-        carousel: [2,3,4]
-    },
-    {
+      numberOfImages[i] = imagesArray[i].length;
 
-        id: 2,
-        name: 'Product 2',
-        price: 88,
-        carousel: [3,4,5]
-    },
-    {
-      id: 3,
-      name: 'Product 3',
-      price: 277,
-      carousel: [6,7,8]
-    }];
-
-
-$('#cart_trigger').on('click', function () {
-    console.log('click');
-    toggle_panel_visibility($('#cart'), $('body'));
-});
-
-function toggle_panel_visibility(panel, body) {
-    if (panel.hasClass('speed-in')) {
-        panel.removeClass('speed-in');
-        body.removeClass('overflow-hidden');
-    } else {
-        panel.addClass('speed-in');
-        body.addClass('overflow-hidden');
+      //imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+      $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][0] + ')');
     }
-}
-
-function makeItem(product){
-    $template.find('.productName').text(product.name);
-    $template.find('figure').attr('id', 'fig' + product.id);
-    $template.find('.quantity').attr('id', 'quantity_' + product.id);
-    $template.find('.carousel__images-wrapper').attr('index', product.id);
-    $template.find('.carousel__images-wrapper').css("background-image", "url(images/"+product.carousel[0]+".jpg)");
-    $template.find('.prices').text('$' + product["price"]);
-}
-
-for (var i=0; i<Object.keys(data).length; i++){
-    var $template = $($('#productTemplate').html());
-    makeItem(data[i]);
-    $("<li></li>").append($template).appendTo(".thumbnail-grid");
-}
 
 
-});
+  });
 
 
 </script>
+
 </body>
 </html>

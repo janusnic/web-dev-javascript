@@ -73,7 +73,7 @@
             </li>
             <li class="item-menu nav-icons">
                 <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
-                <label for="modal-basket-toggle"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
+                <label for="modal-basket-toggle" id="cart_trigger"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
                 <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
             </li>
         </ul>
@@ -115,20 +115,20 @@
           </li>
           <li>
             <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
                     <img src="images/2.jpg" alt="" />
+                    <img src="images/1.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
             </div>
             
             <figure>
-              <div class="images-wrapper" index=0>
+              <div class="images-wrapper" index=1>
                         <div class="controls">
                             <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
                             <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
               </div>
                   <figcaption>
-                      <h3>Product 1</h3>
+                      <h3>Product 2</h3>
                       <span> $99.99</span>
                       <a href="#"> Add to Cart</a>
                   </figcaption>
@@ -137,20 +137,20 @@
           </li>
           <li>
             <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
-                    <img src="images/2.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/1.jpg" alt="" />
             </div>
             
             <figure>
-              <div class="images-wrapper" index=0>
+              <div class="images-wrapper" index=2>
                         <div class="controls">
                             <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
                             <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
               </div>
                   <figcaption>
-                      <h3>Product 1</h3>
+                      <h3>Product 3</h3>
                       <span> $99.99</span>
                       <a href="#"> Add to Cart</a>
                   </figcaption>
@@ -159,27 +159,70 @@
           </li>
           <li>
             <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
+                    <img src="images/4.jpg" alt="" />
                     <img src="images/2.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
             </div>
             
             <figure>
-              <div class="images-wrapper" index=0>
+              <div class="images-wrapper" index=3>
                         <div class="controls">
                             <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
                             <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
               </div>
                   <figcaption>
-                      <h3>Product 1</h3>
+                      <h3>Product 4</h3>
                       <span> $99.99</span>
                       <a href="#"> Add to Cart</a>
                   </figcaption>
               </figure>
 
           </li>
-          
+          <li>
+            <div class="carousel">
+                    <img src="images/5.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=4>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Product 5</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
+
+          </li>
+          <li>
+            <div class="carousel">
+                    <img src="images/6.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=5>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Product 6</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
+
+          </li>
 
       </ul>
   </div><!-- /container -->
@@ -189,8 +232,41 @@
   <p>© 20017 <a href="#">My Site</a></p>
 </footer>
 
+  <div id="cart">
+        <h2>Cart</h2>
+        <ul class="cart-items" id="cart_items">
+
+        </ul> <!-- cd-cart-items -->
+
+        <div class="cart-total">
+            <p>Total <span>$39.96</span></p>
+        </div> <!-- cd-cart-total -->
+
+        <a href="#" class="checkout-btn">Checkout</a>
+
+        <p class="go-to-cart"><a href="#">Go to cart page</a></p>
+    </div> <!-- cd-cart -->
+
 <script type="text/javascript">
   window.onload = function(){
+
+    cart_trigger.onclick = function () {
+        var cart = document.getElementById('cart');
+        toggle_panel_visibility(cart, document.body);
+    };
+
+
+    function toggle_panel_visibility(panel, body) {
+        if (panel.classList.contains('speed-in')) {
+            panel.classList.remove('speed-in');
+            body.classList.remove('overflow-hidden');
+        } else {
+            body.classList.add('overflow-hidden');
+            panel.classList.add('speed-in');
+
+        }
+    }
+
 
     var carousel = document.getElementsByClassName('carousel');
     var imagesWrapper = document.getElementsByClassName('images-wrapper');

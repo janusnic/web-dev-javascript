@@ -73,7 +73,7 @@
             </li>
             <li class="item-menu nav-icons">
                 <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
-                <label for="modal-basket-toggle"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
+                <label for="modal-basket-toggle" id="cart_trigger"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
                 <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
             </li>
         </ul>
@@ -91,94 +91,6 @@
 
       <ul class="grid cards caption-hover">
           
-          <li>
-            <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
-                    <img src="images/2.jpg" alt="" />
-                    <img src="images/3.jpg" alt="" />
-            </div>
-            
-            <figure>
-              <div class="images-wrapper" index=0>
-                        <div class="controls">
-                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
-                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
-                        </div>
-              </div>
-                  <figcaption>
-                      <h3>Product 1</h3>
-                      <span> $99.99</span>
-                      <a href="#"> Add to Cart</a>
-                  </figcaption>
-              </figure>
-
-          </li>
-          <li>
-            <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
-                    <img src="images/2.jpg" alt="" />
-                    <img src="images/3.jpg" alt="" />
-            </div>
-            
-            <figure>
-              <div class="images-wrapper" index=0>
-                        <div class="controls">
-                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
-                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
-                        </div>
-              </div>
-                  <figcaption>
-                      <h3>Product 1</h3>
-                      <span> $99.99</span>
-                      <a href="#"> Add to Cart</a>
-                  </figcaption>
-              </figure>
-
-          </li>
-          <li>
-            <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
-                    <img src="images/2.jpg" alt="" />
-                    <img src="images/3.jpg" alt="" />
-            </div>
-            
-            <figure>
-              <div class="images-wrapper" index=0>
-                        <div class="controls">
-                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
-                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
-                        </div>
-              </div>
-                  <figcaption>
-                      <h3>Product 1</h3>
-                      <span> $99.99</span>
-                      <a href="#"> Add to Cart</a>
-                  </figcaption>
-              </figure>
-
-          </li>
-          <li>
-            <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
-                    <img src="images/2.jpg" alt="" />
-                    <img src="images/3.jpg" alt="" />
-            </div>
-            
-            <figure>
-              <div class="images-wrapper" index=0>
-                        <div class="controls">
-                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
-                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
-                        </div>
-              </div>
-                  <figcaption>
-                      <h3>Product 1</h3>
-                      <span> $99.99</span>
-                      <a href="#"> Add to Cart</a>
-                  </figcaption>
-              </figure>
-
-          </li>
           
 
       </ul>
@@ -189,8 +101,149 @@
   <p>© 20017 <a href="#">My Site</a></p>
 </footer>
 
+  <div id="cart">
+        <h2>Cart</h2>
+        <ul class="cart-items" id="cart_items">
+
+        </ul> <!-- cd-cart-items -->
+
+        <div class="cart-total">
+            <p>Total <span>$39.96</span></p>
+        </div> <!-- cd-cart-total -->
+
+        <a href="#" class="checkout-btn">Checkout</a>
+
+        <p class="go-to-cart"><a href="#">Go to cart page</a></p>
+    </div> <!-- cd-cart -->
+
 <script type="text/javascript">
   window.onload = function(){
+
+    var data = [{
+        id: 0,
+        name: 'Product 0',
+        price: 177,
+        carousel: [1,2,3]
+    },
+    {
+        id: 1,
+        name: 'Product 1',
+        price: 77,
+        carousel: [2,3,4]
+    },
+    {
+        id: 2,
+        name: 'Product 2',
+        price: 88,
+        carousel: [3,4,5]
+    },
+    {
+      id: 3,
+      name: 'Product 3',
+      price: 277,
+      carousel: [6,1,2]
+    },
+    {
+      id: 4,
+      name: 'Product 4',
+      price: 277,
+      carousel: [5,6,4]
+    },
+    {
+      id: 5,
+      name: 'Product 5',
+      price: 277,
+      carousel: [4,5,3]
+    }
+    ];
+
+
+function createItem(j){
+    
+    var li = document.createElement('li');
+    li.setAttribute('id',data[j].id);
+
+    var div = document.createElement('div');
+
+    var figure = document.createElement('figure');
+
+    var div2 = div.cloneNode(true);
+    div2.setAttribute('class', "images-wrapper");
+    div2.setAttribute('index', data[j].id);
+    var div3 = div.cloneNode(true);
+    div3.setAttribute('class', "controls");
+    var div4 = div.cloneNode(true);
+    div4.setAttribute('class', "prev-arrow prev");
+    div4.innerHTML = '<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>';
+    div3.appendChild(div4);
+    var div5 = div.cloneNode(true);
+    div5.setAttribute('class', "next-arrow next");
+    div5.innerHTML = '<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>';
+    div3.appendChild(div5);
+
+    div2.appendChild(div3);
+
+    figure.appendChild(div2);
+
+
+    var figcaption = document.createElement('figcaption');
+
+    var h3 = document.createElement('h3');
+    
+    h3.innerHTML = data[j].name;
+    
+    var span = document.createElement('span');
+    span.innerHTML = data[j].price;
+
+    var a = document.createElement('a');
+    a.setAttribute('href',"#!");
+
+    figcaption.appendChild(h3);
+    figcaption.appendChild(span);
+    figcaption.appendChild(a);
+    
+    figure.appendChild(figcaption);
+
+    var div1 = document.createElement('div');
+    div1.setAttribute('class',"carousel");
+
+    var img = document.createElement('img');
+
+    for(var i=0; i<data[j].carousel.length;i++){
+        var img1 = img.cloneNode(true);
+        img1.setAttribute('src',"images/"+data[j].carousel[i]+".jpg");
+        img1.setAttribute('alt',data[j][name]);
+        div1.appendChild(img1);
+    }
+
+    li.appendChild(div1);
+    li.appendChild(figure);
+    return li;
+
+  }
+
+  for (var i=0; i<data.length; i++) {
+    document.querySelector(".grid").appendChild(createItem(i));
+    }
+
+
+    cart_trigger.onclick = function () {
+        var cart = document.getElementById('cart');
+        toggle_panel_visibility(cart, document.body);
+    };
+
+
+    function toggle_panel_visibility(panel, body) {
+        if (panel.classList.contains('speed-in')) {
+            panel.classList.remove('speed-in');
+            body.classList.remove('overflow-hidden');
+        } else {
+            body.classList.add('overflow-hidden');
+            panel.classList.add('speed-in');
+
+        }
+    }
+
 
     var carousel = document.getElementsByClassName('carousel');
     var imagesWrapper = document.getElementsByClassName('images-wrapper');

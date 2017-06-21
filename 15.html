@@ -73,7 +73,7 @@
             </li>
             <li class="item-menu nav-icons">
                 <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
-                <label for="modal-basket-toggle"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
+                <label for="modal-basket-toggle" id="cart_trigger"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
                 <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
             </li>
         </ul>
@@ -115,20 +115,20 @@
           </li>
           <li>
             <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
                     <img src="images/2.jpg" alt="" />
+                    <img src="images/1.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
             </div>
             
             <figure>
-              <div class="images-wrapper" index=0>
+              <div class="images-wrapper" index=1>
                         <div class="controls">
                             <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
                             <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
               </div>
                   <figcaption>
-                      <h3>Product 1</h3>
+                      <h3>Product 2</h3>
                       <span> $99.99</span>
                       <a href="#"> Add to Cart</a>
                   </figcaption>
@@ -137,20 +137,20 @@
           </li>
           <li>
             <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
-                    <img src="images/2.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/1.jpg" alt="" />
             </div>
             
             <figure>
-              <div class="images-wrapper" index=0>
+              <div class="images-wrapper" index=2>
                         <div class="controls">
                             <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
                             <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
               </div>
                   <figcaption>
-                      <h3>Product 1</h3>
+                      <h3>Product 3</h3>
                       <span> $99.99</span>
                       <a href="#"> Add to Cart</a>
                   </figcaption>
@@ -159,27 +159,70 @@
           </li>
           <li>
             <div class="carousel">
-                    <img src="images/1.jpg" alt="" />
+                    <img src="images/4.jpg" alt="" />
                     <img src="images/2.jpg" alt="" />
                     <img src="images/3.jpg" alt="" />
             </div>
             
             <figure>
-              <div class="images-wrapper" index=0>
+              <div class="images-wrapper" index=3>
                         <div class="controls">
                             <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
                             <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
                         </div>
               </div>
                   <figcaption>
-                      <h3>Product 1</h3>
+                      <h3>Product 4</h3>
                       <span> $99.99</span>
                       <a href="#"> Add to Cart</a>
                   </figcaption>
               </figure>
 
           </li>
-          
+          <li>
+            <div class="carousel">
+                    <img src="images/5.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=4>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Product 5</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
+
+          </li>
+          <li>
+            <div class="carousel">
+                    <img src="images/6.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=5>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Product 6</h3>
+                      <span> $99.99</span>
+                      <a href="#"> Add to Cart</a>
+                  </figcaption>
+              </figure>
+
+          </li>
 
       </ul>
   </div><!-- /container -->
@@ -189,21 +232,51 @@
   <p>© 20017 <a href="#">My Site</a></p>
 </footer>
 
-<script type="text/javascript">
-  window.onload = function(){
+  <div id="cart">
+        <h2>Cart</h2>
+        <ul class="cart-items" id="cart_items">
 
-    var carousel = document.getElementsByClassName('carousel');
-    var imagesWrapper = document.getElementsByClassName('images-wrapper');
+        </ul> <!-- cd-cart-items -->
+
+        <div class="cart-total">
+            <p>Total <span>$39.96</span></p>
+        </div> <!-- cd-cart-total -->
+
+        <a href="#" class="checkout-btn">Checkout</a>
+
+        <p class="go-to-cart"><a href="#">Go to cart page</a></p>
+    </div> <!-- cd-cart -->
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+
+    $('#cart_trigger').click(function (e) {
+        if ($('#cart').hasClass('speed-in')) {
+            $('#cart').removeClass('speed-in');
+            $('body').removeClass('overflow-hidden');
+        } else {
+            $('body').addClass('overflow-hidden');
+            $('#cart').addClass('speed-in');
+        }
+    });
+
+
+    var carousel = $('.carousel');
+    var imagesWrapper = $('.images-wrapper');
+
+    var prevArrow = $('.prev');
+    var nextArrow = $('.next');
+
+    
     var imagesArray = [];
     var numberOfImages = [];
-
-    var prevArrow = document.getElementsByClassName('prev');
-    var nextArrow = document.getElementsByClassName('next');
-
-   
+    
     for (var i=0; i<carousel.length; i++){
 
-      var childNodes = carousel[i].childNodes;
+      var childNodes = $(carousel[i]).children();
      
       imagesArray[i] = [];
 
@@ -211,33 +284,34 @@
       
           var currentNode = childNodes[j];
       
-          if (currentNode.nodeName === 'IMG') {
+          if ($(currentNode).prop("tagName") === 'IMG') {
               imagesArray[i].push(currentNode.src);
-              currentNode.classList.add('hide');
+              $(currentNode).addClass('hide');
           }
       }
 
       numberOfImages[i] = imagesArray[i].length;
-
-      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+      $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][0] + ')');
     }
+
 
       var currentImage = [];
 
       for (var i=0; i<carousel.length; i++){
 
             currentImage[i] = 0;
-      //      cur[i] = i;
 
-            prevArrow[i].addEventListener('click', function (e) {
-                handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
+            $(prevArrow[i]).click(function (e) {
+              
+                handleSlideshowArrow('prev', $(this).parent().parent().attr('index'));
             });
 
-            nextArrow[i].addEventListener('click',  function (e) {
-                handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
+            $(nextArrow[i]).click(function (e) {
+              
+                handleSlideshowArrow('next', $(this).parent().parent().attr('index'));
             });
+
         }
-
 
       function handleSlideshowArrow(val, i) {
         if (val === 'prev') {
@@ -253,15 +327,17 @@
                 currentImage[i] = 0;
             }
         }
-        imagesWrapper[i].classList.add('fade-out');
-        imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
-        imagesWrapper[i].classList.remove('fade-out');
+
+        $(imagesWrapper[i]).addClass('fade-out');
+        $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][currentImage[i]] + ')');
+        $(imagesWrapper[i]).removeClass('fade-out');
+
     }
 
 
+  });
 
 
-  }
 </script>
 
 </body>

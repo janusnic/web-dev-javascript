@@ -2,404 +2,194 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cart</title>
-    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet prefetch" href="css/styles.css">
+    <title>Shop</title>
+
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style media="all">
+
+
+
+</style>
+
 </head>
 
 <body>
-    <header>
 
-    <nav class="mainnav" role="navigation">
+    <div class="fake-nav"></div><!-- special for content under navigation, when nav situate in top height==nav.height -->
+    <div id="nav">
 
-      <ul>
-          <!--   START bottom in responsive menu    -->
+    <!--  START search input-->
+        <div class="search-container">
+            <input id="search-toggle" type="checkbox">
+            <label class="search-backdrop" for="search-toggle"></label>
+            <div class="search-content">
+                <form id="search-form" action="">
+                    <input type="search" class="input-search" placeholder="Input what you want to search" required>
+                    <button type="submit" id="searchsubmit" class="fa fa-search fa-4x"></button>
+                </form>
+            </div>
+        </div>
+    <!--  END search input-->
 
-              <label for="responsive-toggle" id="btm-open-menu">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </label>
-          <!--   END bottom in responsive menu    -->
+        <ul class="list-menu">
 
-          <li class="item-menu shop" id="menushop">
-              <i href="shop.html">shop</i>
-              <ul class="sub-menu">
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>
-              <li><a href="#">Link 4</a></li>
-              <li><a href="#">Link 5</a></li>
-              <li><a href="#">Link 6</a></li>
-              </ul>
+        <!--   START bottom in responsive menu    -->
+            <input id="responsive-toggle" type="checkbox">
+
+            <label for="responsive-toggle" id="btm-open-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        <!--   END bottom in responsive menu    -->
+
+            <li class="item-menu shop">
+                <i href="shop.html">shop</i>
+                <ul class="sub-menu">
+                    <li>
+                        <h3 class="title-sub-menu"><a href="index.html">Home</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="blog.html">Blog</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="about.html">About</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="contact.html">Contact</a></h3>
+                    </li>
+                    <li>
+                        <h3 class="title-sub-menu"><a href="shop.html">Shop</a></h3>
+                    </li>
+                </ul>
+            </li>
+            <li class="item-menu logo">
+              <a href="index.html">LOGO<br><span>Short Description</span></a>
+            </li>
+            <li class="item-menu nav-icons">
+                <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
+                <label for="modal-basket-toggle"><i class="fa fa-shopping-bag" aria-hidden="true"></i></label>
+                <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
+            </li>
+        </ul>
+    </div>
+    <!--  END NAVIGAION  -->
+
+  <header>
+    <hgroup>
+       <h1>My Web Shop</h1>
+
+    </hgroup>
+  </header>
+
+  <div class="wrapper">
+
+      <ul class="grid cards caption-hover">
+          
+          <li>
+            <div class="carousel">
+                    <img src="images/1.jpg" alt="" />
+                    <img src="images/2.jpg" alt="" />
+                    <img src="images/3.jpg" alt="" />
+            </div>
+            
+            <figure>
+              <div class="images-wrapper" index=0>
+                        <div class="controls">
+                            <div class="prev-arrow prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                            <div class="next-arrow next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></div>
+                        </div>
+              </div>
+                  <figcaption>
+                      <h3>Settings</h3>
+                      <span>Janus Nic</span>
+                      <a href="#">Take a look</a>
+                  </figcaption>
+              </figure>
+
           </li>
-          <li class="logo">
-            <a href="index.html">LOGO<br><span>Short Description</span></a>
-          </li>
-          <li class="nav-icons" id="navicons">
-              <label for="search-toggle"><i class="fa fa-search button-search" aria-hidden="true"></i></label>
-              <label for="modal-basket-toggle" id="cart_trigger"><i class="fa fa-shopping-cart" aria-hidden="true"></i></label>
-              <label for="modal-login-toggle"><i class="fa fa-user" aria-hidden="true"></i></label>
-          </li>
+
       </ul>
-
-    </nav>
-</header>
-
-	<main>
-
-		<h1>My SHOP</h1>
-
-		<section class="thumbnail-grid flex">
-
-		</section>
-	</main>
-
-    <div id="cart">
-        <h2>Cart</h2>
-        <ul class="cart-items" id="cart_items">
-
-        </ul> <!-- cd-cart-items -->
-
-        <div class="cart-total">
-            <p>Total <span>$39.96</span></p>
-        </div> <!-- cd-cart-total -->
-
-        <a href="#" class="checkout-btn">Checkout</a>
-
-        <p class="go-to-cart"><a href="#">Go to cart page</a></p>
-    </div> <!-- cd-cart -->
-
-<script>
-
-cart_trigger.onclick = function () {
-    var cart = document.getElementById('cart');
-    toggle_panel_visibility(cart, document.body);
-};
-
-
-function toggle_panel_visibility(panel, body) {
-    if (panel.classList.contains('speed-in')) {
-        panel.classList.remove('speed-in');
-        body.classList.remove('overflow-hidden');
-    } else {
-        body.classList.add('overflow-hidden');
-        panel.classList.add('speed-in');
-
-    }
-}
-
-
-var data = [{
-
-    id: 0,
-    name: 'Product 0',
-    price: 177,
-    carousel: [1,2,3]
-},
-{
-
-    id: 1,
-    name: 'Product 1',
-    price: 77,
-    carousel: [2,3,4]
-},
-{
-
-    id: 2,
-    name: 'Product 2',
-    price: 88,
-    carousel: [3,4,5]
-},
-{
-  id: 3,
-  name: 'Product 3',
-  price: 277,
-  carousel: [6,7,8]
-}];
-
-
-var a = document.createElement('a');
-var div = document.createElement('div');
-var img = document.createElement('img');
-var input = document.createElement('input');
-
-function createItem(ind){
-var a0 = a.cloneNode(true);
-a0.setAttribute('href',"#!");
-a0.setAttribute('class',"flex-item");
-
-var div1 = div.cloneNode(true);
-div1.setAttribute('class',"carousel");
-
-
-for(var i=0; i<data[ind].carousel.length;i++){
-    var img1 = img.cloneNode(true);
-    img1.setAttribute('src',"images/"+data[ind].carousel[i]+".jpg");
-    div1.appendChild(img1);
-}
-
-a0.appendChild(div1);
-
-var fig = document.createElement('figure');
-  fig.setAttribute('id','fig'+ind);
-
-var div2 = div.cloneNode(true);
-
-div2.setAttribute('class', "carousel__images-wrapper");
-div2.setAttribute('index', ind);
-
-div2.innerHTML = '<div class="controls"><div class="carousel__prev-arrow prev">&lt;</div><div class="carousel__next-arrow next">&gt;</div></div></div>';
-
-fig.appendChild(div2);
-
-var figcap = document.createElement('figcaption');
-
-var h2 = document.createElement('h2');
-h2.setAttribute('class',"productName");
-h2.innerHTML = data[ind].name;
-figcap.appendChild(h2);
-
-var div3 = div.cloneNode(true);
-div3.setAttribute('class', "quantity-input");
-
-var input1 = input.cloneNode(true);
-
-input1.setAttribute('class', "minus btn");
-input1.setAttribute('type', "button");
-input1.setAttribute('value', "-");
-
-div3.appendChild(input1);
-
-var input2 = input.cloneNode(true);
-
-input2.setAttribute('class', "input-text quantity text");
-input2.setAttribute('id', "quantity_"+ind);
-input2.setAttribute('value', "1");
-input2.setAttribute('size', "4");
-div3.appendChild(input2);
-
-var input3 = input.cloneNode(true);
-input3.setAttribute('class', "plus btn");
-input3.setAttribute('type', "button");
-input3.setAttribute('value', "+");
-div3.appendChild(input3);
-figcap.appendChild(div3);
-
-var d1 = div.cloneNode(true);
-d1.setAttribute('class', 'button');
-var d2 = div.cloneNode(true);
-d2.setAttribute('class', 'prices');
-d2.innerHTML = data[ind].price;
-d1.appendChild(d2);
-var a1 = a.cloneNode(true);
-a1.setAttribute('class', 'addtocart');
-var d3 = div.cloneNode(true);
-d3.setAttribute('class', 'add');
-
-d3.setAttribute('rel', "watche_"+data[ind].id);
-d3.setAttribute('product', data[ind].name);
-d3.setAttribute('sel', data[ind].price);
-
-d3.innerHTML = 'Add to Cart';
-
-a1.appendChild(d3);
-var d4 = div.cloneNode(true);
-d4.setAttribute('class', 'added');
-a1.appendChild(d4);
-d1.appendChild(a1);
-
-figcap.appendChild(d1);
-
-fig.appendChild(figcap);
-a0.appendChild(fig);
-return a0;
-}
-
-for (var i=0; i<data.length; i++) {
-document.querySelector(".thumbnail-grid").appendChild(createItem(i));
-}
-
-var carousel = document.getElementsByClassName('carousel');
-
-var numberOfImages = [];
-
-var imagesArray = [];
-
-var imagesWrapper = document.getElementsByClassName('carousel__images-wrapper');
-
-var prevArrow = document.getElementsByClassName('prev');
-var nextArrow = document.getElementsByClassName('next');
-
-
-for (var i=0; i<carousel.length; i++){
-// создание двумерного массива
-    var childNodes = carousel[i].childNodes;
-    imagesArray[i] = [];
-
-    for (var j = 0; j < childNodes.length; j++) {
-        var currentNode = childNodes[j];
-        if (currentNode.nodeName === 'IMG') {
-            imagesArray[i].push(currentNode.src);
-            currentNode.classList.add('hide');
-        }
-    }
-
-    numberOfImages[i] = imagesArray[i].length;
-
-
-imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
-}
-
-var currentImage = [];
-
-for (var i=0; i<carousel.length; i++){
-
-    currentImage[i] = 0;
-
-    prevArrow[i].addEventListener('click', function (e) {
-        handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
-    });
-
-    nextArrow[i].addEventListener('click',  function (e) {
-        handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
-    });
-}
-
-function handleSlideshowArrow(val, i) {
-      if (val === 'prev') {
-          if (currentImage[i] > 0) {
-              currentImage[i]--;
-          } else {
-              currentImage[i] = numberOfImages[i] - 1;
-          }
-      } else if (val === 'next') {
-          if (currentImage[i] < numberOfImages[i] - 1) {
-              currentImage[i]++;
-          } else {
-              currentImage[i] = 0;
+  </div><!-- /container -->
+
+<footer>
+  <p>§</p>
+  <p>© 20017 <a href="#">My Site</a></p>
+</footer>
+
+<script type="text/javascript">
+  window.onload = function(){
+
+    var carousel = document.getElementsByClassName('carousel');
+    var imagesWrapper = document.getElementsByClassName('images-wrapper');
+    var imagesArray = [];
+    var numberOfImages = [];
+
+    var prevArrow = document.getElementsByClassName('prev');
+    var nextArrow = document.getElementsByClassName('next');
+
+   
+    for (var i=0; i<carousel.length; i++){
+
+      var childNodes = carousel[i].childNodes;
+     
+      imagesArray[i] = [];
+
+      for (var j = 0; j < childNodes.length; j++) {
+      
+          var currentNode = childNodes[j];
+      
+          if (currentNode.nodeName === 'IMG') {
+              imagesArray[i].push(currentNode.src);
+              currentNode.classList.add('hide');
           }
       }
-      imagesWrapper[i].classList.add('fade-out');
-      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
-      imagesWrapper[i].classList.remove('fade-out');
+
+      numberOfImages[i] = imagesArray[i].length;
+
+      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+    }
+
+      var currentImage = [];
+
+      currentImage[0] = 0;
+
+      prevArrow[0].addEventListener('click', function (e) {
+          handleSlideshowArrow('prev');
+      });
+
+      nextArrow[0].addEventListener('click',  function (e) {
+          handleSlideshowArrow('next');
+      });
+
+      function handleSlideshowArrow(val) {
+        if (val === 'prev') {
+            if (currentImage[0] > 0) {
+                currentImage[0]--;
+            } else {
+                currentImage[0] = numberOfImages[0] - 1;
+            }
+        } else if (val === 'next') {
+            if (currentImage[0] < numberOfImages[0] - 1) {
+                currentImage[0]++;
+            } else {
+                currentImage[0] = 0;
+            }
+        }
+        imagesWrapper[0].classList.add('fade-out');
+        imagesWrapper[0].style.backgroundImage = 'url(' + imagesArray[0][currentImage[0]] + ')';
+        imagesWrapper[0].classList.remove('fade-out');
+    }
+
+
+
   }
-
-  var plus = document.getElementsByClassName('plus');
-   for (var i=0;i<plus.length; i++) {
-       plus[i].addEventListener('click', function(e) {
-       var val = parseInt(e.target.previousElementSibling.getAttribute('value'));
-       e.target.previousElementSibling.setAttribute('value', val+1);
-       });
-   }
-
-   var minus = document.getElementsByClassName('minus');
-    for (var i=0;i<minus.length; i++) {
-        minus[i].addEventListener('click', function(e) {
-        var val = parseInt(e.target.nextElementSibling.getAttribute('value'));
-        e.target.nextElementSibling.setAttribute('value', val-1);
-        });
-    }
-
-    var addButtons = document.getElementsByClassName('add');
-
-    for (var i=0;i<addButtons.length; i++) {
-        addButtons[i].addEventListener('click', function(e) {
-        var  items = cart_items.children,
-              item = this.parentElement.parentElement.parentElement.parentElement;
-
-               var val = this.getAttribute("rel");
-               var productName =this.getAttribute('product');
-               var price = this.getAttribute('sel');
-               var qty = this.parentNode.parentNode.parentNode.querySelector(".quantity-input").getElementsByClassName('quantity')[0].getAttribute('value');
-
-              if(document.getElementById("price_"+val))
-              {
-                var new_val = parseFloat(document.getElementById("price_"+val).innerHTML);
-                new_val +=(parseFloat(qty)*parseFloat(price));
-
-                document.querySelector("span#price_"+val).innerHTML = new_val.toFixed(2);
-
-                var new_qty_val = parseFloat(document.getElementById("qty_"+val).innerHTML);
-                new_qty_val +=parseFloat(qty);
-                document.getElementById("qty_"+val).innerHTML = new_qty_val;
-              }else{
-                      var bg = item.previousElementSibling.children[0].getAttribute('src');
-                      cart_items.append(createCartItem(val, productName, price, qty, bg));
-
-                    };
-
-
-                    var removeButtons = document.getElementsByClassName("item-remove");
-
-                    Array.prototype.forEach.call(removeButtons, function(el) {
-                        el.addEventListener('click', function(){
-                           this.parentNode.remove();
-                           //recalck();
-                       });
-                    });
-
-
-                });
-
-    }
-
-//item-remove
-
-
-
-    function createCartItem(val, productName, price, qty, bg){
-        var li = document.createElement('li');
-        li.setAttribute('id',val);
-        li.setAttribute("class", "cart-product");
-        var span = document.createElement('span');
-        var input = document.createElement('input');
-        input.setAttribute("class", "qty");
-        input.setAttribute('id',"qty_"+val);
-        input.setAttribute("value", qty);
-        span.appendChild(input);
-
-        var div = document.createElement('div');
-        div.setAttribute("class", "price");
-        div.innerHTML = productName+'<br/>'+'<span class="item-prices" id="price_'+val+'">'+price+'</span>&nbsp;';
-
-        var a = document.createElement('a');
-        a.setAttribute("class", "item-remove img-replace");
-        a.setAttribute("href", "#");
-        a.innerHTML = "Remove";
-
-        li.appendChild(span);
-        li.appendChild(div);
-        li.appendChild(a);
-        li.querySelector('.qty').style.backgroundImage = 'url(' + bg + ')';
-
-        return li;
-    }
-
-
-////////
-
-
-    document.getElementById('btm-open-menu').onclick = function () {
-        var toggle = document.querySelector('#menushop');
-        if (toggle.classList.contains('isvisible')) {
-            document.querySelector('#btm-open-menu span:nth-child(1)').classList.remove('child1');
-            document.querySelector('#btm-open-menu span:nth-child(2)').classList.remove('child2');
-            document.querySelector('#btm-open-menu span:nth-child(3)').classList.remove('child3');
-            document.querySelector('#btm-open-menu span:nth-child(4)').classList.remove('child1');
-            document.querySelector('#menushop').classList.remove('isvisible');
-
-    }else{
-        document.querySelector('#btm-open-menu span:nth-child(1)').classList.add('child1');
-        document.querySelector('#btm-open-menu span:nth-child(2)').classList.add('child2');
-        document.querySelector('#btm-open-menu span:nth-child(3)').classList.add('child3');
-        document.querySelector('#btm-open-menu span:nth-child(4)').classList.add('child1');
-        document.querySelector('#menushop').classList.add('isvisible');
-        document.querySelector('#navicons').classList.add('isvisible');
-    }
-};
-
 </script>
+
 </body>
 </html>
