@@ -92,7 +92,6 @@
       <ul class="grid cards caption-hover">
           
           
-
       </ul>
   </div><!-- /container -->
 
@@ -116,10 +115,12 @@
         <p class="go-to-cart"><a href="#">Go to cart page</a></p>
     </div> <!-- cd-cart -->
 
+<script src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-  window.onload = function(){
 
-    var data = [{
+  $(document).ready(function() {
+
+        var data = [{
         id: 0,
         name: 'Product 0',
         price: 177,
@@ -157,137 +158,156 @@
     }
     ];
 
-
+  
 function createItem(j){
+    var figure = $('<figure>');
+
+    var div = $('<div>');
+
+    var div2 = div.clone().attr({'class': "images-wrapper",'index': data[j].id});
+
+    var div3 = div.clone().attr('class', "controls");
+    var div4 = div.clone().attr('class', "prev-arrow prev");
+    div4.html('<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>');
+    div3.append(div4);
+    var div5 = div.clone().attr('class', "next-arrow next");
+    div5.html('<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>');
+    div3.append(div5);
+
+    div2.append(div3);
+
+    figure.append(div2);
+
+    var figcaption = $('<figcaption>');
+
+    var h3 = $('<h3>').html(data[j].name);
+
+    h3.addClass('title'); 
     
-    var li = document.createElement('li');
+    var span = $('<span>').html(data[j].price);
+    span.addClass('price'); 
+
+    var a = $('<a>').attr('href',"#!");
+    a.addClass('add'); 
+    a.text('Add To Cart');
+
+    figcaption.append(h3);
+    figcaption.append(span);
+    figcaption.append(a);
     
-    li.setAttribute('productId', data[j].id);
+    figure.append(figcaption);
     
-    li.classList.add('product') 
 
-    var div = document.createElement('div');
-
-    var figure = document.createElement('figure');
-
-    var div2 = div.cloneNode(true);
-    div2.setAttribute('class', "images-wrapper");
-    div2.setAttribute('index', data[j].id);
-    var div3 = div.cloneNode(true);
-    div3.setAttribute('class', "controls");
-    var div4 = div.cloneNode(true);
-    div4.setAttribute('class', "prev-arrow prev");
-    div4.innerHTML = '<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>';
-    div3.appendChild(div4);
-    var div5 = div.cloneNode(true);
-    div5.setAttribute('class', "next-arrow next");
-    div5.innerHTML = '<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>';
-    div3.appendChild(div5);
-
-    div2.appendChild(div3);
-
-    figure.appendChild(div2);
-
-
-    var figcaption = document.createElement('figcaption');
-
-    var h3 = document.createElement('h3');
-    h3.classList.add("title");
-    h3.innerHTML = data[j].name;
+    var div1 = div.clone().attr('class',"carousel");
     
-    var span = document.createElement('span');
-    span.classList.add("price");
-    span.innerHTML = data[j].price;
-
-    var a = document.createElement('a');
-    a.setAttribute('href',"#!");
-
-    a.classList.add("add");
-    a.innerHTML = 'Add To Cart';
-
-    figcaption.appendChild(h3);
-    figcaption.appendChild(span);
-    figcaption.appendChild(a);
-    
-    figure.appendChild(figcaption);
-
-    var div1 = document.createElement('div');
-    div1.setAttribute('class',"carousel");
-
-    var img = document.createElement('img');
+    var img = $('<img>');
 
     for(var i=0; i<data[j].carousel.length;i++){
-        var img1 = img.cloneNode(true);
-        img1.setAttribute('src',"images/"+data[j].carousel[i]+".jpg");
-        img1.setAttribute('alt',data[j][name]);
-        div1.appendChild(img1);
+        var img1 = img.clone();
+        img1.attr('src',"images/"+data[j].carousel[i]+".jpg");
+        img1.attr('alt',data[j][name]);
+        div1.append(img1);
     }
 
-    li.appendChild(div1);
-    li.appendChild(figure);
-    return li;
+    var li = $('<li>').attr('productId', data[j].id);
+    
+    li.addClass('product');
 
-  }
+    li.append(div1);
+    li.append(figure);
+    return li;
+}
 
   for (var i=0; i<data.length; i++) {
-    document.querySelector(".grid").appendChild(createItem(i));
+    $(".grid").append(createItem(i));
     }
 
 
-   var addButtons = document.getElementsByClassName('add');
+function createCartItem(item_id, productName, price, bg){
 
-    for (var i=0;i<addButtons.length; i++) {
+        var li = $("<li></li>");
+        li.attr("id",  'item_' + item_id);
+        li.addClass("cart-product");
 
-        addButtons[i].addEventListener('click', function(e) {
+        var span = $('<span>');
+        var input = $('<input>').attr({"class": "qty", 'id':"qty_"+item_id, "value": 1});
 
-        var  item = this.parentElement.parentElement.parentElement;
-        console.log(item);
+        span.append(input);
 
-        var bg = item.children[0].children[0].getAttribute('src');
-        console.log(bg);
+        var div = $('<div>').attr("class", "price");
+        
+        div.html(productName+'<br/>'+'<span class="item-prices" id="price_'+item_id+'">'+price+'</span>&nbsp;');
 
-        var title =this.parentElement.querySelector(".title").innerHTML;
-        console.log(title);
+        var a = $('<a>');
+        a.attr({"class": "item-remove img-replace", "href": "#"}).text("Remove");
 
-        var price = this.parentElement.querySelector(".price").innerHTML;
-        console.log(price);
-  
-        });
+        li.append(span);
+        li.append(div);
+        li.append(a);
+        li.find('input.qty').attr('style', 'background-image:'+ bg);
 
+       return li;
     }
 
+$('body').on('click', '.add', function () {
+    
+        var item = $(this).parents('li');
+        var bg = item.find('.images-wrapper').css('background-image');
+        var title = item.find(".title").text();
+        var price = item.find(".price").text();
+        var item_id = item.attr('productId');
+    
+        if(document.getElementById("price_"+item_id))
+          {
+                var new_val = parseFloat($("#price_"+item_id).text());
+                new_val +=parseFloat(price);
+                $('#cart_items').find("#price_"+item_id).text(new_val.toFixed(2));
+                var new_qty_val = parseFloat($("#qty_"+item_id).val());
+                new_qty_val++;
+                $("#qty_"+item_id).val(new_qty_val);
+           }else{
+                $('#cart_items').append(createCartItem(item_id, title, price, bg));
+           };
+    
+           var removeButtons = $(".item-remove");
+
+           removeButtons.each(function(index) {
+                $(this).click(function(){
+                           $(this).parent().remove();
+                });
+
+           });
+
+    });
 
 
-    cart_trigger.onclick = function () {
-        var cart = document.getElementById('cart');
-        toggle_panel_visibility(cart, document.body);
-    };
 
 
-    function toggle_panel_visibility(panel, body) {
-        if (panel.classList.contains('speed-in')) {
-            panel.classList.remove('speed-in');
-            body.classList.remove('overflow-hidden');
+
+    $('#cart_trigger').click(function (e) {
+        if ($('#cart').hasClass('speed-in')) {
+            $('#cart').removeClass('speed-in');
+            $('body').removeClass('overflow-hidden');
         } else {
-            body.classList.add('overflow-hidden');
-            panel.classList.add('speed-in');
-
+            $('body').addClass('overflow-hidden');
+            $('#cart').addClass('speed-in');
         }
-    }
+    });
 
 
-    var carousel = document.getElementsByClassName('carousel');
-    var imagesWrapper = document.getElementsByClassName('images-wrapper');
+    var carousel = $('.carousel');
+    var imagesWrapper = $('.images-wrapper');
+
+    var prevArrow = $('.prev');
+    var nextArrow = $('.next');
+
+    
     var imagesArray = [];
     var numberOfImages = [];
-
-    var prevArrow = document.getElementsByClassName('prev');
-    var nextArrow = document.getElementsByClassName('next');
-
-   
+    
     for (var i=0; i<carousel.length; i++){
 
-      var childNodes = carousel[i].childNodes;
+      var childNodes = $(carousel[i]).children();
      
       imagesArray[i] = [];
 
@@ -295,16 +315,16 @@ function createItem(j){
       
           var currentNode = childNodes[j];
       
-          if (currentNode.nodeName === 'IMG') {
+          if ($(currentNode).prop("tagName") === 'IMG') {
               imagesArray[i].push(currentNode.src);
-              currentNode.classList.add('hide');
+              $(currentNode).addClass('hide');
           }
       }
 
       numberOfImages[i] = imagesArray[i].length;
-
-      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+      $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][0] + ')');
     }
+
 
       var currentImage = [];
 
@@ -312,15 +332,17 @@ function createItem(j){
 
             currentImage[i] = 0;
 
-            prevArrow[i].addEventListener('click', function (e) {
-                handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
+            $(prevArrow[i]).click(function (e) {
+              
+                handleSlideshowArrow('prev', $(this).parent().parent().attr('index'));
             });
 
-            nextArrow[i].addEventListener('click',  function (e) {
-                handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
+            $(nextArrow[i]).click(function (e) {
+              
+                handleSlideshowArrow('next', $(this).parent().parent().attr('index'));
             });
+
         }
-
 
       function handleSlideshowArrow(val, i) {
         if (val === 'prev') {
@@ -336,15 +358,17 @@ function createItem(j){
                 currentImage[i] = 0;
             }
         }
-        imagesWrapper[i].classList.add('fade-out');
-        imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
-        imagesWrapper[i].classList.remove('fade-out');
+
+        $(imagesWrapper[i]).addClass('fade-out');
+        $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][currentImage[i]] + ')');
+        $(imagesWrapper[i]).removeClass('fade-out');
+
     }
 
 
+  });
 
 
-  }
 </script>
 
 </body>
