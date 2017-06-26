@@ -253,41 +253,47 @@
 <script type="text/javascript">
   window.onload = function(){
 
-    var data = [{
+            var data = [{
         id: 0,
         name: 'Product 0',
         price: 177,
-        carousel: [1,2,3]
+        carousel: [1,2,3],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
         id: 1,
         name: 'Product 1',
         price: 77,
-        carousel: [2,3,4]
+        carousel: [2,3,4],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
         id: 2,
         name: 'Product 2',
         price: 88,
-        carousel: [3,4,5]
+        carousel: [3,4,5],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
       id: 3,
       name: 'Product 3',
       price: 277,
-      carousel: [6,1,2]
+      carousel: [6,1,2],
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
       id: 4,
       name: 'Product 4',
       price: 277,
-      carousel: [5,6,4]
+      carousel: [5,6,4],
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
       id: 5,
       name: 'Product 5',
       price: 277,
-      carousel: [4,5,3]
+      carousel: [4,5,3],
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     }
     ];
 
@@ -375,14 +381,94 @@ function createItem(j){
 
   var products = document.getElementsByClassName("product");
 
+
   Array.prototype.forEach.call(products, function(el) {
+        
         el.addEventListener('click', function(event){
+        
             event.stopPropagation();
-            document.querySelector(".wrapper").innerHTML = "Empty";
+
+            var $itemID = this.getAttribute('productId');
+
+            var div = document.createElement('div');
+
+            document.querySelector(".wrapper").innerHTML = '';
+
+            var divBlock =  div.cloneNode(false);
+            
+            divBlock.classList.add("block");
+
+            for (var i=0; i<data[$itemID].carousel.length; i++){
+
+            var divBlockW =  div.cloneNode(false);
+            
+            divBlockW.classList.add("block-w");
+            
+            divBlockW.classList.add("block"+i);
+
+            divBlockW.setAttribute('style', 'background-image:' + 'url(images/'+data[$itemID].carousel[i]+'.jpg)')
+            
+            var divBlockBack =  div.cloneNode(false);
+            
+            divBlockBack.classList.add("back");
+
+            var divBlockText =  div.cloneNode(false);
+            
+            divBlockText.classList.add("text");            
+            
+            var divBlockContainer =  div.cloneNode(false);
+            
+            divBlockContainer.classList.add("containerName");
+
+            divBlockContainer.innerHTML = data[$itemID].name;
+
+            var divBlockDescription =  div.cloneNode(false);
+            
+            divBlockDescription.classList.add("hellothere");
+            
+            divBlockDescription.innerHTML = data[$itemID].description;
+
+            divBlockText.append(divBlockContainer);
+            
+            divBlockText.append(divBlockDescription);
+            
+            divBlockBack.append(divBlockText);
+            
+            divBlockW.append(divBlockBack);
+           
+            divBlock.append(divBlockW);
+        
+        }
+
+        document.querySelector(".wrapper").append(divBlock);
+            
+            
       });
   });
 
 
+  var active = 'active'
+
+  var inactive = 'min'
+
+
+  var blocks = document.getElementsByClassName("block-w");
+
+
+  Array.prototype.forEach.call(blocks, function(el) {
+        el.addEventListener('click', function(event){
+          event.stopPropagation();
+
+          this.classList.remove(inactive);
+          this.classList.toggle(active);
+
+  })
+
+   });
+
+
+
+    
 
    function createCartItem(item_id, productName, price, bg){
 

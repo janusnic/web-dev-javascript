@@ -5,7 +5,7 @@
     <title>Shop</title>
 
 <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+{# <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script> #}
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/style.css">
 
@@ -250,261 +250,250 @@
         <p class="go-to-cart"><a href="#">Go to cart page</a></p>
     </div> <!-- cd-cart -->
 
+<script src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-  window.onload = function(){
 
-    var data = [{
+  $(document).ready(function() {
+
+        var data = [{
         id: 0,
         name: 'Product 0',
         price: 177,
-        carousel: [1,2,3]
+        carousel: [1,2,3],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
         id: 1,
         name: 'Product 1',
         price: 77,
-        carousel: [2,3,4]
+        carousel: [2,3,4],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
         id: 2,
         name: 'Product 2',
         price: 88,
-        carousel: [3,4,5]
+        carousel: [3,4,5],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
       id: 3,
       name: 'Product 3',
       price: 277,
-      carousel: [6,1,2]
+      carousel: [6,1,2],
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
       id: 4,
       name: 'Product 4',
       price: 277,
-      carousel: [5,6,4]
+      carousel: [5,6,4],
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     },
     {
       id: 5,
       name: 'Product 5',
       price: 277,
-      carousel: [4,5,3]
+      carousel: [4,5,3],
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, natus'
     }
     ];
 
-
+  
 function createItem(j){
+    var figure = $('<figure>');
+
+    var div = $('<div>');
+
+    var div2 = div.clone().attr({'class': "images-wrapper",'index': data[j].id});
+
+    var div3 = div.clone().attr('class', "controls");
+    var div4 = div.clone().attr('class', "prev-arrow prev");
+    div4.html('<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>');
+    div3.append(div4);
+    var div5 = div.clone().attr('class', "next-arrow next");
+    div5.html('<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>');
+    div3.append(div5);
+
+    div2.append(div3);
+
+    figure.append(div2);
+
+    var figcaption = $('<figcaption>');
+
+    var h3 = $('<h3>').html(data[j].name);
+
+    h3.addClass('title'); 
     
-    var li = document.createElement('li');
+    var span = $('<span>').html(data[j].price);
+    span.addClass('price'); 
+
+    var a = $('<a>').attr('href',"#!");
+    a.addClass('add'); 
+    a.text('Add To Cart');
+
+    figcaption.append(h3);
+    figcaption.append(span);
+    figcaption.append(a);
     
-    li.setAttribute('productId', data[j].id);
-    
-    li.classList.add('product') 
-
-    var div = document.createElement('div');
-
-    var figure = document.createElement('figure');
-
-    var div2 = div.cloneNode(true);
-    div2.setAttribute('class', "images-wrapper");
-    div2.setAttribute('index', data[j].id);
-    var div3 = div.cloneNode(true);
-    div3.setAttribute('class', "controls");
-    var div4 = div.cloneNode(true);
-    div4.setAttribute('class', "prev-arrow prev");
-    div4.innerHTML = '<i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>';
-    div3.appendChild(div4);
-    var div5 = div.cloneNode(true);
-    div5.setAttribute('class', "next-arrow next");
-    div5.innerHTML = '<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>';
-    div3.appendChild(div5);
-
-    div2.appendChild(div3);
-
-    figure.appendChild(div2);
-
-
-    var figcaption = document.createElement('figcaption');
-
-    
-    var span = document.createElement('span');
-    span.classList.add("price");
-    span.innerHTML = data[j].price;
-
-    var h3 = document.createElement('h3');
-    h3.classList.add("title");
-    
-    h3.innerHTML = data[j].name;
-    
-   
-    var a = document.createElement('a');
-    a.setAttribute('href',"#!");
-
-    a.classList.add("add");
-    a.innerHTML = 'Add To Cart';
-
+    figure.append(figcaption);
     
 
-    figcaption.appendChild(h3);
-    figcaption.appendChild(span);
-    figcaption.appendChild(a);
+    var div1 = div.clone().attr('class',"carousel");
     
-    figure.appendChild(figcaption);
-
-    var div1 = document.createElement('div');
-    div1.setAttribute('class',"carousel");
-
-    var img = document.createElement('img');
+    var img = $('<img>');
 
     for(var i=0; i<data[j].carousel.length;i++){
-        var img1 = img.cloneNode(true);
-        img1.setAttribute('src',"images/"+data[j].carousel[i]+".jpg");
-        img1.setAttribute('alt',data[j][name]);
-        div1.appendChild(img1);
+        var img1 = img.clone();
+        img1.attr('src',"images/"+data[j].carousel[i]+".jpg");
+        img1.attr('alt',data[j][name]);
+        div1.append(img1);
     }
 
-    li.appendChild(div1);
-    li.appendChild(figure);
-    return li;
+    var li = $('<li>').attr('productId', data[j].id);
+    
+    li.addClass('product');
 
-  }
+    li.append(div1);
+    li.append(figure);
+    
+
+    return li;
+}
 
   for (var i=0; i<data.length; i++) {
-    document.querySelector(".grid").appendChild(createItem(i));
+    $(".grid").append(createItem(i));
     }
 
 
-  var products = document.getElementsByClassName("product");
 
-  Array.prototype.forEach.call(products, function(el) {
-        el.addEventListener('click', function(event){
-            event.stopPropagation();
-            document.querySelector(".wrapper").innerHTML = "Empty";
-      });
-  });
+    $('body').on('click', '.product', function (event) {
 
+       event.stopPropagation();
 
+       var $itemID = $(this).attr('productId');
 
-   function createCartItem(item_id, productName, price, bg){
+       var div = $('<div>');
 
-        var li = document.createElement('li');
+       $(".wrapper").empty();11
 
-        li.setAttribute('id','item_' + item_id);
-        li.setAttribute("class", "cart-product");
+       var divBlock =  div.clone(false).addClass("block");
+    
+     for (var i=0; i<data[$itemID].carousel.length; i++){
 
-        var span = document.createElement('span');
-        var input = document.createElement('input');
-        input.setAttribute("class", "qty");
-        input.setAttribute('id',"qty_"+item_id);
-        input.setAttribute("value", 1);
-        span.appendChild(input);
+        var divBlockW =  div.clone(false).addClass("block-w");
+        divBlockW.addClass("block"+i);
 
-        var div = document.createElement('div');
-        div.setAttribute("class", "price");
-        div.innerHTML = productName+'<br/>'+'<span class="item-prices" id="price_'+item_id+'">'+price+'</span>&nbsp;';
+        divBlockW.attr('style', 'background-image:' + 'url(images/'+data[$itemID].carousel[i]+'.jpg)')
+        
+        var divBlockBack =  div.clone(false).addClass("back");
 
-        var a = document.createElement('a');
-        a.setAttribute("class", "item-remove img-replace");
-        a.setAttribute("href", "#");
-        a.innerHTML = "Remove";
+        var divBlockText =  div.clone(false).addClass("text");
+        var divBlockContainer =  div.clone(false).addClass("containerName").text(data[$itemID].name);
+        var divBlockDescription =  div.clone(false).addClass("hellothere").text(data[$itemID].description);
 
-        li.appendChild(span);
-        li.appendChild(div);
-        li.appendChild(a);
-        li.querySelector('.qty').style.backgroundImage = 'url(' + bg + ')';
-
-
-
-        return li;
+        divBlockText.append(divBlockContainer);
+        divBlockText.append(divBlockDescription);
+        divBlockBack.append(divBlockText);
+        divBlockW.append(divBlockBack);
+       
+        divBlock.append(divBlockW);
+    
     }
 
+        $(".wrapper").append(divBlock);
+    });
 
-   var addButtons = document.getElementsByClassName('add');
 
-    for (var i=0;i<addButtons.length; i++) {
 
-        addButtons[i].addEventListener('click', function(e) {
+
+function createCartItem(item_id, productName, price, bg){
+
+        var li = $("<li></li>");
+        li.attr("id",  'item_' + item_id);
+        li.addClass("cart-product");
+
+        var span = $('<span>');
+        var input = $('<input>').attr({"class": "qty", 'id':"qty_"+item_id, "value": 1});
+
+        span.append(input);
+
+        var div = $('<div>').attr("class", "price");
         
-        e.stopPropagation();
-        
-        var item = this.parentElement.parentElement.parentElement;
+        div.html(productName+'<br/>'+'<span class="item-prices" id="price_'+item_id+'">'+price+'</span>&nbsp;');
 
-        var item_id = item.getAttribute('productId');
+        var a = $('<a>');
+        a.attr({"class": "item-remove img-replace", "href": "#"}).text("Remove");
 
-        var bg = item.children[0].children[0].getAttribute('src');
-               
-        var title =this.parentElement.querySelector(".title").innerHTML;
+        li.append(span);
+        li.append(div);
+        li.append(a);
+        li.find('input.qty').attr('style', 'background-image:'+ bg);
 
-        var price = this.parentElement.querySelector(".price").innerHTML;
+       return li;
+    }
 
+$('.add').on('click', function (event) {
 
+        event.stopPropagation();
+    
+        var item = $(this).parents('li');
+        var bg = item.find('.images-wrapper').css('background-image');
+        var title = item.find(".title").text();
+        var price = item.find(".price").text();
+        var item_id = item.attr('productId');
+    
         if(document.getElementById("price_"+item_id))
           {
-            var new_val = parseFloat(document.getElementById("price_"+item_id).innerHTML);
-
-            new_val +=parseFloat(price);
-
-            document.querySelector("span#price_"+item_id).innerHTML = new_val.toFixed(2);
-
-            var new_qty_val = parseFloat(document.getElementById("qty_"+item_id).value);
-            
+                var new_val = parseFloat($("#price_"+item_id).text());
+                new_val +=parseFloat(price);
+                $('#cart_items').find("#price_"+item_id).text(new_val.toFixed(2));
+                var new_qty_val = parseFloat($("#qty_"+item_id).val());
                 new_qty_val++;
-            console.log(new_qty_val);
-                document.getElementById("qty_"+item_id).value = new_qty_val;
+                $("#qty_"+item_id).val(new_qty_val);
            }else{
-                cart_items.append(createCartItem(item_id, title, price, bg));
+                $('#cart_items').append(createCartItem(item_id, title, price, bg));
            };
+    
+           var removeButtons = $(".item-remove");
 
-           var removeButtons = document.getElementsByClassName("item-remove");
+           removeButtons.each(function(index) {
+                $(this).click(function(){
+                           $(this).parent().remove();
+                });
 
-           Array.prototype.forEach.call(removeButtons, function(el) {
-                        el.addEventListener('click', function(event){
-                           event.stopPropagation();
-                           this.parentNode.remove();
-                    });
            });
 
-
-           
-
-          });
-
-
-    }
+    });
 
 
 
 
 
-    cart_trigger.onclick = function () {
-        var cart = document.getElementById('cart');
-        toggle_panel_visibility(cart, document.body);
-    };
-
-
-    function toggle_panel_visibility(panel, body) {
-        if (panel.classList.contains('speed-in')) {
-            panel.classList.remove('speed-in');
-            body.classList.remove('overflow-hidden');
+    $('#cart_trigger').click(function (e) {
+        if ($('#cart').hasClass('speed-in')) {
+            $('#cart').removeClass('speed-in');
+            $('body').removeClass('overflow-hidden');
         } else {
-            body.classList.add('overflow-hidden');
-            panel.classList.add('speed-in');
-
+            $('body').addClass('overflow-hidden');
+            $('#cart').addClass('speed-in');
         }
-    }
+    });
 
 
-    var carousel = document.getElementsByClassName('carousel');
-    var imagesWrapper = document.getElementsByClassName('images-wrapper');
+    var carousel = $('.carousel');
+    var imagesWrapper = $('.images-wrapper');
+
+    var prevArrow = $('.prev');
+    var nextArrow = $('.next');
+
+    
     var imagesArray = [];
     var numberOfImages = [];
-
-    var prevArrow = document.getElementsByClassName('prev');
-    var nextArrow = document.getElementsByClassName('next');
-
-   
+    
     for (var i=0; i<carousel.length; i++){
 
-      var childNodes = carousel[i].childNodes;
+      var childNodes = $(carousel[i]).children();
      
       imagesArray[i] = [];
 
@@ -512,16 +501,16 @@ function createItem(j){
       
           var currentNode = childNodes[j];
       
-          if (currentNode.nodeName === 'IMG') {
+          if ($(currentNode).prop("tagName") === 'IMG') {
               imagesArray[i].push(currentNode.src);
-              currentNode.classList.add('hide');
+              $(currentNode).addClass('hide');
           }
       }
 
       numberOfImages[i] = imagesArray[i].length;
-
-      imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][0] + ')';
+      $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][0] + ')');
     }
+
 
       var currentImage = [];
 
@@ -529,15 +518,17 @@ function createItem(j){
 
             currentImage[i] = 0;
 
-            prevArrow[i].addEventListener('click', function (e) {
-                handleSlideshowArrow('prev', this.parentNode.parentNode.getAttribute('index'));
+            $(prevArrow[i]).click(function (e) {
+              
+                handleSlideshowArrow('prev', $(this).parent().parent().attr('index'));
             });
 
-            nextArrow[i].addEventListener('click',  function (e) {
-                handleSlideshowArrow('next', this.parentNode.parentNode.getAttribute('index'));
+            $(nextArrow[i]).click(function (e) {
+              
+                handleSlideshowArrow('next', $(this).parent().parent().attr('index'));
             });
+
         }
-
 
       function handleSlideshowArrow(val, i) {
         if (val === 'prev') {
@@ -553,38 +544,42 @@ function createItem(j){
                 currentImage[i] = 0;
             }
         }
-        imagesWrapper[i].classList.add('fade-out');
-        imagesWrapper[i].style.backgroundImage = 'url(' + imagesArray[i][currentImage[i]] + ')';
-        imagesWrapper[i].classList.remove('fade-out');
+
+        $(imagesWrapper[i]).addClass('fade-out');
+        $(imagesWrapper[i]).css('background-image','url(' + imagesArray[i][currentImage[i]] + ')');
+        $(imagesWrapper[i]).removeClass('fade-out');
+
     }
 
-
-  var $mm = document.querySelector('.megamenu');
-  var $mmTrigger = document.querySelector('.megamenu__trigger');
-  var $mmWrap = document.querySelector('.megamenu__wrap');
+  var $mm = $('.megamenu');
+  var $mmTrigger = $('.megamenu__trigger');
+  var $mmWrap = $('.megamenu__wrap');
 
 
 function openMegaMenu() {
-    $mm.style.top = '-' + $mmWrap.offsetHeight + 'px';
-    $mmTrigger.querySelector('.icon').classList.add('open');
-    $mm.classList.add('open');
+    $mm.css({
+
+      top: '-' + $mmWrap.outerHeight() + 'px'
+    });
+    $mmTrigger.find('.icon').addClass('open');
+    $mm.addClass('open');
   }
 
   function closeMegaMenu() {
-    $mm.classList.remove('open');
-    $mm.setAttribute('style', '');
-    $mmTrigger.querySelector('.icon').classList.remove('open');
+    $mm.removeClass('open');
+    $mm.attr('style', '');
+    $mmTrigger.find('.icon').removeClass('open');
 
   }
 
     // Mega Menu
 
-  $mmWrap.style.top = $mmTrigger.offsetHeight;
+  $mmWrap.css('top', $mmTrigger.outerHeight());
 
-  $mmTrigger.addEventListener('click', function(e) {
+  $mmTrigger.on('click', function(e) {
     e.preventDefault();
 
-    if ($mm.classList.contains('open')) {
+    if ($mm.hasClass('open')) {
       closeMegaMenu();
     } else {
       openMegaMenu();
@@ -593,8 +588,9 @@ function openMegaMenu() {
   });
 
 
+  });
 
-  }
+
 </script>
 
 </body>
