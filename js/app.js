@@ -62,8 +62,6 @@ $(function() {
       }
 
 
-
-
   $('body').on('click', '.products', function (event) {
 
      event.stopPropagation();

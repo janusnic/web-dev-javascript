@@ -1,0 +1,51 @@
+<html>
+<body>
+
+<button id="run" >Запустить скрипт</button>
+<div id="console" style="border: 1px solid gray; width:250px; height: 110px; padding: 10px; background:lightgray;">
+Консоль выполнения запроса:
+</div>
+<br/>
+<div id="printResult">
+После нажатия на ссылку, тут будет сообщение с сервера!
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script>
+
+$('body').on('click', '#run', function () {
+
+    $.ajax({
+      url: 'http://headers.jsontest.com/',
+
+      beforeSend: function(){
+     // Действия, которые будут выполнены перед выполнением этого ajax-запроса
+     $('#console').html("<br/><em>1: Подготовка к отправке...</em>");
+      },
+
+      success: function(){
+          $('#console').append("<br/><em>4: Обмен завершен.</em>");
+      },
+
+      //error  (Локальный)
+      // Происходит в случае неудачного завершения запроса.
+      error: function(jqXHR, error, errorThrown) {
+               if(jqXHR.status&&jqXHR.status==400){
+                   $('#console').append("<br/><em>400: Ошибка: запрашиваемый скрипт не найден! </em>" + jqXHR.responseText);
+               }else{
+                   $('#console').append("<br/><em>400: Ошибка: сервер вернул статус: </em>" + jqXHR.status);
+               }
+          },
+
+      complete: function(){
+        // Действия, которые будут выполнены после завершения ajax-запроса
+        //Происходит при завершении запроса (неважно, удачном оно было или нет).
+        $('#console').append("<br/><em>5: Действия, которые будут выполнены после завершения ajax-запроса...</em>");
+      }
+
+    });
+});
+//
+</script>
+</body>
+</html>

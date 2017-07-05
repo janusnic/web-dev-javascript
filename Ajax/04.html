@@ -1,0 +1,31 @@
+<html>
+<body>
+
+<button id="run" >Get Posts</button>
+<div id="res">
+
+</div>
+
+<script src="js/jquery.min.js"></script>
+
+<script>
+
+$('body').on('click', '#run', function () {
+
+    var root = 'http://jsonplaceholder.typicode.com';
+
+
+    $.ajax({
+      url: root + '/posts',
+      // IP Address
+      // Calling http://ip.jsontest.com/ will return your IP address in JSON form. {"ip": "8.8.8.8"}
+      // url: 'http://ip.jsontest.com/',
+      method: 'GET'
+    }).then(function(data) {
+      $('#res').text(data);
+    });
+});
+//
+</script>
+</body>
+</html>
